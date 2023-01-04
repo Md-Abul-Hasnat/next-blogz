@@ -1,0 +1,193 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  background-color: transparent;
+  z-index: 100;
+  transition: 0.2s;
+  background-color: var(--second-clr);
+}
+
+.navbar.sticky {
+  position: fixed;
+  height: 11vh;
+}
+
+.navbar .navMenu {
+  display: flex;
+  align-items: center;
+  transition: right 0.7s;
+}
+
+.navbar .logo {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.navbar li {
+  list-style-type: none;
+  padding: 0 25px;
+  margin-top: 6px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 400;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.navbar li .signIn {
+  background-color: var(--third-clr);
+  padding: 7px 15px 0px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.signIn::after {
+  content: "";
+  width: 0%;
+  height: 0px;
+  display: block;
+  margin-top: 0px;
+}
+
+.navbar li a::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  display: block;
+  transition: 0.5s;
+  background-color: var(--third-clr);
+  margin-top: 5px;
+}
+
+.navbar li a:hover::after {
+  width: 100%;
+}
+
+.faBars {
+  display: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faXmark {
+  display: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (max-width: 950px) {
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+  .navbar li {
+    padding: 0 20px;
+  }
+
+  .navbar li a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .navbar li {
+    padding: 0 15px;
+  }
+  .navbar li a {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .navbar {
+    padding: 0 25px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .navbar .logo {
+    font-size: 1.2rem;
+  }
+  .navbar .navMenu {
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    text-align: center;
+    z-index: 100;
+    background-color: var(--second-clr);
+  }
+
+  .navMenu.active {
+    right: 0;
+  }
+
+  .navbar li {
+    padding: 20px 0;
+  }
+
+  .navbar li a {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .navbar li .signIn {
+    padding: 9px 25px 2px;
+  }
+
+  .navbar li a:hover::after {
+    width: 0;
+  }
+
+  .faBars {
+    display: block;
+    color: var(--white);
+    cursor: pointer;
+    width: 20px;
+  }
+
+  .faXmark {
+    display: block;
+    color: var(--white);
+    width: 20px;
+    position: absolute;
+    top: 20px;
+    right: 26px;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .navbar .logo {
+    font-size: 1.1rem;
+  }
+
+  .faBars {
+    width: 16px;
+  }
+  .faXmark {
+    width: 15px;
+    top: 18px;
+  }
+  .navbar li {
+    padding: 18px 0;
+  }
+
+  .navbar li a {
+    font-size: 0.9rem;
+  }
+}

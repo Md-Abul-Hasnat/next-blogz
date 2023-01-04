@@ -1,0 +1,151 @@
+.heroSwiper {
+  width: 96vw;
+  height: 80vh;
+  margin: 0 auto;
+  padding: 120px 0 40px;
+}
+
+.heroSwiper .mySwiper {
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.SwiperSlide {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.SwiperSlide .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.image .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiperBlogDetails {
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.swiperBlogDetails p {
+  width: fit-content;
+  padding: 6px 15px;
+  background-color: var(--third-clr);
+  color: var(--white);
+  font-size: 0.9rem;
+}
+.swiperBlogDetails h1 {
+  margin: 10px 0;
+  line-height: 1.5;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.swiperBlogDetails .icon {
+  margin-left: 5px;
+  width: 15px;
+}
+
+.swiperBlogDetails a {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  width: fit-content;
+  margin: 0 5px 5px auto;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.swiperBlogDetails a:hover {
+  color: var(--third-clr);
+}
+
+.swiper-pagination-bullet {
+  background-color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .swiperBlogDetails a {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .swiperBlogDetails p {
+    font-size: 0.8rem;
+  }
+  .swiperBlogDetails h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .swiperBlogDetails h1 {
+    font-size: 1.2rem;
+  }
+  .recent-blogs-cetegory-wrapper {
+    grid-template-columns: 1fr;
+    gap: 0px;
+    row-gap: 20px;
+  }
+  .recent-blogs-cetegory h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main-section-wrapper .blog-section {
+    grid-template-columns: 100%;
+    gap: 0%;
+    row-gap: 10px;
+  }
+  .main-section-wrapper {
+    row-gap: 1%;
+  }
+  .main-section > h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .main-section > h1 {
+    font-size: 1.4rem;
+  }
+  .swiperBlogDetails h1 {
+    margin: 15px 0;
+    line-height: 1.4;
+    font-size: 1.2rem;
+  }
+  .recent-blogs-cetegory h1 {
+    font-size: 1.3rem;
+  }
+}
