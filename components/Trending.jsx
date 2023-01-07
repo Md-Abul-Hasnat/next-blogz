@@ -1,6 +1,6 @@
 import styles from "../styles/Trending.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,6 +35,7 @@ const Trending = () => {
               width={30}
               height={30}
               className={styles.author}
+              alt="author"
             />
             <h4>Barak Obama</h4>
           </div>
@@ -50,6 +51,7 @@ const Trending = () => {
               width={30}
               height={30}
               className={styles.author}
+              alt="author"
             />
             <h4>Barak Obama</h4>
           </div>
@@ -65,6 +67,7 @@ const Trending = () => {
               width={30}
               height={30}
               className={styles.author}
+              alt="author"
             />
             <h4>Barak Obama</h4>
           </div>
@@ -80,6 +83,7 @@ const Trending = () => {
               width={30}
               height={30}
               className={styles.author}
+              alt="author"
             />
             <h4>Barak Obama</h4>
           </div>
@@ -95,6 +99,7 @@ const Trending = () => {
               width={30}
               height={30}
               className={styles.author}
+              alt="author"
             />
             <h4>Barak Obama</h4>
           </div>
