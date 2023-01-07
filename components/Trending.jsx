@@ -18,6 +18,7 @@ const Trending = () => {
               src={"/face.jpg"}
               width={30}
               height={30}
+              alt="author"
               className={styles.author}
             />
             <h4>Barak Obama</h4>

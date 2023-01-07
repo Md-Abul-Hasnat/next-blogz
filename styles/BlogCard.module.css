@@ -1,0 +1,156 @@
+.mainBlogCard {
+  position: relative;
+  width: 100%;
+  border: 0.5px solid lightgray;
+  cursor: pointer;
+}
+.BlogCard {
+  width: 100%;
+}
+
+.BlogCard .top {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cetagoryName {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border: 0.5px solid var(--third-clr);
+  background-color: var(--third-clr);
+  color: var(--white);
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.top .image {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.bottom {
+  width: 100%;
+  padding: 10px 13px 15px;
+}
+
+.blogImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blogIcon {
+  width: 18px;
+}
+
+.bottom .info {
+  display: flex;
+  color: var(--text-clr);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info p {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottom .blogTitle {
+  margin: 10px 0;
+  line-height: 1.4;
+  font-size: 1.3rem;
+  color: var(--second-clr);
+}
+
+.bottom .blogText {
+  line-height: 1.5;
+  font-size: 1rem;
+  color: var(--text-clr);
+}
+
+@media screen and (max-width: 1050px) {
+  .heroMainWrapper {
+    width: 90%;
+    grid-template-columns: 68% 30%;
+    gap: 2%;
+  }
+  .heroMain h1 {
+    margin-left: 5%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .cetagoryName {
+    font-size: 0.8rem;
+  }
+  .top .image {
+    height: 190px;
+  }
+
+  .blogImage {
+    width: 25px;
+    height: 25px;
+  }
+
+  .blogIcon {
+    width: 15px;
+  }
+
+  .info p {
+    font-size: 0.8rem;
+  }
+
+  .bottom .blogTitle {
+    line-height: 1.2;
+    font-size: 1.2rem;
+  }
+
+  .bottom .blogText {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .heroMainWrapper {
+    grid-template-columns: 100%;
+    gap: 0%;
+    row-gap: 40px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .heroLeft {
+    gap: 15px;
+  }
+  .heroMain h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .heroMain h1 {
+    font-size: 1.4rem;
+  }
+  .icon {
+    width: 20px;
+  }
+  .heroLeft {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    row-gap: 20px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .heroMain h1 {
+    font-size: 1.2rem;
+  }
+  .icon {
+    width: 16px;
+  }
+  .top .image {
+    height: 160px;
+  }
+}

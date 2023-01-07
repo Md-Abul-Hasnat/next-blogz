@@ -1,0 +1,187 @@
+.aboutBlogz {
+  border: 0.5px solid lightgrey;
+  padding: 20px;
+  text-align: center;
+}
+
+.aboutBlogz h1 {
+  font-size: 2.2rem;
+  color: var(--second-clr);
+  margin-bottom: 10px;
+}
+
+.aboutBlogz p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-clr);
+}
+
+.aboutBlogz .socialIcons {
+  margin-top: 20px;
+}
+
+.fbIcon {
+  width: 16px;
+  color: var(--second-clr);
+}
+
+.socialIcons .icon {
+  margin-left: 20px;
+  width: 22px;
+  color: var(--second-clr);
+  cursor: pointer;
+}
+
+.exploreTopics {
+  margin-top: 100px;
+  border: 0.5px solid lightgrey;
+  padding: 20px;
+}
+
+.exploreTopics h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--second-clr);
+  margin-bottom: 35px;
+}
+
+.exploreTopics ul a {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid lightgrey;
+  padding-bottom: 12px;
+}
+.exploreTopics ul a:last-child {
+  border-bottom: none;
+}
+
+.exploreTopics ul a small {
+  font-size: 1.2rem;
+  color: var(--text-clr);
+  transition: 0.3s;
+  cursor: pointer;
+}
+.exploreTopics ul a small:hover {
+  color: var(--second-clr);
+}
+
+.popularPosts {
+  margin-top: 100px;
+  border: 0.5px solid lightgrey;
+  padding: 20px;
+}
+
+.popularPosts h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: var(--second-clr);
+}
+
+.popularPosts a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0px 20px;
+  margin-bottom: 10px;
+  border-bottom: 0.5px solid lightgrey;
+  cursor: pointer;
+}
+.popularPosts a:last-child {
+  border-bottom: none;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--second-clr);
+}
+
+.popularPosts a h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.popularPosts a p {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 950px) {
+  .aboutBlogz h1 {
+    font-size: 1.7rem;
+  }
+  .aboutBlogz p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .exploreTopics h1 {
+    font-size: 1.5rem;
+  }
+  .exploreTopics ul li small {
+    font-size: 1rem;
+  }
+  .popularPosts h1 {
+    font-size: 1.5rem;
+  }
+  .popularPosts a h4 {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .aboutBlogz {
+    padding: 20px 40px;
+  }
+  .exploreTopics {
+    margin-top: 80px;
+    padding: 20px 40px;
+  }
+  .popularPosts {
+    margin-top: 80px;
+  }
+  .popularPosts h1 {
+    margin-bottom: 30px;
+  }
+
+  .popularPosts a {
+    justify-content: flex-start;
+  }
+
+  .popularPosts a h4 {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .aboutBlogz {
+    padding: 20px;
+  }
+  .exploreTopics {
+    padding: 20px;
+  }
+  .exploreTopics ul a small {
+    font-size: 1rem;
+  }
+  .popularPosts {
+    margin-top: 80px;
+  }
+
+  .popularPosts a h4 {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .aboutBlogz h1 {
+    font-size: 1.5rem;
+  }
+  .aboutBlogz p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  .popularPosts a h4 {
+    font-size: 0.8rem;
+  }
+  .popularPosts a p {
+    font-size: 0.7rem;
+  }
+}
