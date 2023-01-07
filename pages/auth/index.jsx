@@ -1,5 +1,5 @@
 import styles from "../../styles/Auth.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
@@ -7,9 +7,18 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import Image from "next/image";
-// import {auth} from '../../components/firebaseConfig'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { auth, storage } from "../../components/firebaseConfig";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import { GlobalContext } from "../../components/Context";
 
 const Auth = () => {
+  const { setUser } = useContext(GlobalContext);
+
+  const router = useRouter();
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
@@ -17,6 +26,7 @@ const Auth = () => {
     username: "",
     email: "",
     password: "",
+    profilePic: "",
   });
 
   //    functions
@@ -32,26 +42,32 @@ const Auth = () => {
   function handleSignUp(e) {
     e.preventDefault();
 
-    createUserWithEmailAndPassword(auth, form.email, form.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setUser(user);
-        updateProfile(auth.currentUser, {
-          displayName: form.username,
-        })
-          .then(() => {
-            localStorage.setItem("user", JSON.stringify(user));
-            toast.success("User created successfully");
-            location.state ? navigate(location.state.from) : navigate("/");
+    if (form.email && form.password && form.username && form.profilePic) {
+      createUserWithEmailAndPassword(auth, form.email, form.password)
+        .then((userCredential) => {
+          toast.success("Successfully signed in");
+          const user = userCredential.user;
+
+          setUser(user);
+          updateProfile(auth.currentUser, {
+            displayName: form.username,
+            photoURL: form.profilePic,
           })
-          .catch((error) => {
-            toast.error(error);
-          });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast.error(errorMessage);
-      });
+            .then(() => {
+              localStorage.setItem("user", JSON.stringify(user));
+            })
+            .catch((error) => {
+              toast.error(error);
+            });
+          router.push("/");
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          toast.error(errorMessage);
+        });
+    } else {
+      toast.error("Profile picture is required !!");
+    }
   }
 
   function handleSignIn(e) {
@@ -62,7 +78,7 @@ const Auth = () => {
         setUser(user);
         localStorage.setItem("user", JSON.stringify(user));
         toast.success("Signed in successfully");
-        location.state ? navigate(location.state.from) : navigate("/");
+        router.push("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -76,11 +92,26 @@ const Auth = () => {
       .then(() => {
         toast.success("Check your email");
         setResetEmail("");
+        router.push("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
         toast.error(errorMessage);
       });
+  }
+
+  async function uploadImage(e) {
+    const storageRef = ref(storage, `images/${e.target.value}`);
+
+    uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+      getDownloadURL(storageRef)
+        .then((url) => {
+          setForm({ ...form, profilePic: url });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   }
 
   return (
@@ -112,13 +143,26 @@ const Auth = () => {
               onSubmit={isSignUp ? handleSignUp : handleSignIn}
             >
               {isSignUp && (
-                <Image
-                  className={styles.profilePic}
-                  src={"/pic.png"}
-                  width={200}
-                  height={200}
-                  alt="Profile picture"
-                />
+                <>
+                  <Image
+                    className={styles.profilePic}
+                    src={`${
+                      form.profilePic ? `${form.profilePic}` : "/pic.png"
+                    }`}
+                    width={200}
+                    height={200}
+                    alt="Profile picture"
+                  />
+                  <button className={styles.btn}>
+                    <FontAwesomeIcon className={styles.icon} icon={faImage} />
+                    <input
+                      onChange={uploadImage}
+                      value={form.image}
+                      className={styles.file}
+                      type="file"
+                    />
+                  </button>
+                </>
               )}
               {isSignUp && (
                 <input

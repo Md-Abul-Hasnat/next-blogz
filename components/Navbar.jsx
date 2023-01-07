@@ -1,10 +1,14 @@
 import styles from "../styles/Navbar.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { GlobalContext } from "./Context";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, setUser } = useContext(GlobalContext);
+
   const [click, setClick] = useState(false);
   const [stickyNav, setStickyNav] = useState(false);
 
@@ -21,6 +25,12 @@ const Navbar = () => {
 
   function handleClick() {
     setClick(!click);
+  }
+
+  function signOut() {
+    setUser({});
+    localStorage.setItem("user", JSON.stringify({}));
+    toast.success("Successfully signed out!");
   }
 
   return (
@@ -59,9 +69,19 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className={styles.signIn} onClick={handleClick} href={"/auth"}>
-            SIGN IN
-          </Link>
+          {user?.email ? (
+            <button onClick={signOut} className={styles.signoutBtn}>
+              Sign out
+            </button>
+          ) : (
+            <Link
+              className={styles.signIn}
+              onClick={handleClick}
+              href={"/auth"}
+            >
+              SIGN IN
+            </Link>
+          )}
         </li>
         <FontAwesomeIcon
           className={styles.faXmark}

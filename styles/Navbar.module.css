@@ -48,6 +48,18 @@
   cursor: pointer;
 }
 
+.signoutBtn {
+  background-color: var(--third-clr);
+  color: var(--white);
+  font-weight: 500;
+  padding: 7px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
 .navbar li .signIn {
   background-color: var(--third-clr);
   padding: 7px 15px 0px;
