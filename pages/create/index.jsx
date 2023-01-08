@@ -26,7 +26,7 @@ const CreateBlog = () => {
               <input type="text" placeholder="Title" />
               <div className={styles.blogDetail}>
                 <div className={styles.cetagory}>
-                  <select name="cars" id="cars">
+                  <select>
                     <option value="">Please select a cetagory</option>
                     <option value="saab">Saab</option>
                     <option value="mercedes">Mercedes</option>
@@ -34,9 +34,8 @@ const CreateBlog = () => {
                   </select>
                 </div>
                 <div className={styles.trending}>
-                  <label for="cars">Is it a trending topic</label>
-
-                  <select name="cars" id="cars">
+                  <select>
+                    <option value="">Is it trending </option>
                     <option value="volvo">yes</option>
                     <option value="saab">No</option>
                   </select>

@@ -37,7 +37,7 @@
 
 .blogForm {
   width: 100%;
-  padding: 130px 0 50px;
+  padding: 110px 0 50px;
 }
 
 .blogForm > h1 {
@@ -48,14 +48,14 @@
 }
 
 .blogFormWrapper {
-  width: 60%;
+  width: 55%;
   margin: 0 auto;
   margin-top: 30px;
 }
 
 .blogFormWrapper img {
   width: 100%;
-  height: 350px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -66,6 +66,7 @@
   font-size: 1rem;
   background-color: var(--main-clr);
   border: 1px solid gray;
+  outline: none;
 }
 .blogFormWrapper input[type="text"]::placeholder {
   font-size: 1rem;
@@ -86,29 +87,29 @@
 }
 
 .cetagory select {
+  width: 100%;
   color: gray;
   font-size: 1rem;
   border: none;
   background-color: var(--main-clr);
+  outline: none;
 }
 
 .trending {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
   border: 1px solid gray;
   padding: 10px;
-  color: gray;
 }
 
 .trending select {
-  width: 70px;
+  width: 100%;
   border: none;
   font-size: 1rem;
   color: gray;
   background-color: var(--main-clr);
+  outline: none;
 }
 
 .blogDescription {
@@ -118,6 +119,7 @@
   background-color: var(--main-clr);
   padding: 10px;
   font-size: 1.1rem;
+  outline: none;
 }
 
 .blogDescription::placeholder {
@@ -141,6 +143,12 @@
   color: var(--white);
 }
 
+@media screen and (max-width: 1000px) {
+  .blogFormWrapper {
+    width: 65%;
+  }
+}
+
 @media screen and (max-width: 950px) {
   .warning {
     height: 400px;
@@ -155,6 +163,43 @@
   .warning h1 {
     font-size: 1.4rem;
   }
+  .blogFormWrapper {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .blogFormWrapper input[type="text"] {
+    padding: 10px 5px;
+    font-size: 0.9rem;
+  }
+  .blogFormWrapper input[type="text"]::placeholder {
+    font-size: 0.9rem;
+  }
+  .cetagory {
+    padding: 10px;
+  }
+  .cetagory select {
+    font-size: 0.9rem;
+  }
+  .trending {
+    padding: 5px;
+  }
+
+  .trending select {
+    font-size: 0.9rem;
+  }
+  .blogDescription {
+    height: 200px;
+    font-size: 1rem;
+  }
+
+  .blogDescription::placeholder {
+    font-size: 1rem;
+  }
+  .blogFormWrapper input[type="submit"] {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
 }
 @media screen and (max-width: 550px) {
   .warning {
@@ -166,8 +211,20 @@
   .warning a {
     padding: 8px 30px;
   }
+  .blogFormWrapper {
+    width: 85%;
+  }
+  .blogForm {
+    padding: 90px 0 50px;
+  }
+  .blogFormWrapper img {
+    height: 230px;
+  }
+  .blogForm > h1 {
+    font-size: 1.5rem;
+  }
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 450px) {
   .warning {
     height: 250px;
     width: 90%;
@@ -179,5 +236,8 @@
     padding: 7px 20px;
     font-weight: 400;
     font-size: 0.9rem;
+  }
+  .blogFormWrapper {
+    width: 90%;
   }
 }
