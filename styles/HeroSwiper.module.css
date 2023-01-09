@@ -63,11 +63,11 @@
   color: var(--white);
   font-size: 0.9rem;
 }
-.swiperBlogDetails h1 {
+.title {
   margin: 10px 0;
-  line-height: 1.5;
+  line-height: 1.4;
   font-size: 1.3rem;
-  color: white;
+  color: var(--white);
 }
 
 .swiperBlogDetails .icon {
@@ -104,13 +104,13 @@
   .swiperBlogDetails p {
     font-size: 0.8rem;
   }
-  .swiperBlogDetails h1 {
+  .title {
     font-size: 1.3rem;
   }
 }
 
 @media screen and (max-width: 550px) {
-  .swiperBlogDetails h1 {
+  .title {
     font-size: 1.2rem;
   }
   .recent-blogs-cetegory-wrapper {
@@ -140,7 +140,7 @@
   .main-section > h1 {
     font-size: 1.4rem;
   }
-  .swiperBlogDetails h1 {
+  .title {
     margin: 15px 0;
     line-height: 1.4;
     font-size: 1.2rem;

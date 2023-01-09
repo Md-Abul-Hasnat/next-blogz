@@ -100,7 +100,7 @@ const Auth = () => {
       });
   }
 
-  async function uploadImage(e) {
+  function uploadImage(e) {
     const storageRef = ref(storage, `images/${e.target.value}`);
 
     uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {

@@ -8,26 +8,28 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
+import { GlobalContext } from "./Context";
 
-const HomeRightPart = () => {
+const HomeRightPart = ({ blogs }) => {
+  const { getDate, reduceText } = useContext(GlobalContext);
+
   const cetagories = [
     "Education",
     "Programming",
-    "Religion",
     "Gaming",
     "Politics",
     "Sports",
     "Nature",
+    "Digital Marketing",
   ];
 
-  //   const { blogs } = useContext(GlobalContext);
-
-  //   const popularBlogs = blogs.filter(
-  //     (blog) =>
-  //       blog.cetagory === "Religion" ||
-  //       blog.cetagory === "Programming" ||
-  //       blog.cetagory === "Nature"
-  //   );
+  const popularBlogs = blogs.filter(
+    (blog) =>
+      blog.blogData.cetagory === "Digital Marketing" ||
+      blog.blogData.cetagory === "Sports" ||
+      blog.blogData.cetagory === "Nature"
+  );
 
   return (
     <div className={styles.rightSection}>
@@ -49,96 +51,42 @@ const HomeRightPart = () => {
       <div className={styles.exploreTopics}>
         <h1>Explore Topics</h1>
         <ul>
-          {/* {cetagories.map((cetagory, i) => { */}
-          {/* return ( */}
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          <Link href={`/cetagory`}>
-            <small>Sports </small>
-            <small>2</small>
-          </Link>
-          {/* );
-          })} */}
+          {cetagories.map((cetagory, i) => {
+            return (
+              <Link key={i} href={`/cetagory/${cetagory}`}>
+                <small>{cetagory} </small>
+                <small>
+                  {
+                    blogs.filter((blog) => blog.blogData.cetagory === cetagory)
+                      .length
+                  }
+                </small>
+              </Link>
+            );
+          })}
         </ul>
       </div>
 
       <div className={styles.popularPosts}>
         <h1>Popular Blogs</h1>
-        {/* {popularBlogs.slice(0, 5).map((blog, i) => { */}
-        {/* const { title, imgUrl, date, uniqueID } = blog; */}
-        {/* return ( */}
-        <Link href={`/blogDetail`}>
-          <Image
-            className={styles.image}
-            width={105}
-            height={105}
-            src={"/1.png"}
-            alt="Popular blog"
-          />
-          <div className="detail">
-            <h4>This is a blog title </h4>
-            <p> 2 dec 2023 </p>
-          </div>
-        </Link>
-        <Link href={`/blogDetail`}>
-          <Image
-            className={styles.image}
-            width={105}
-            height={105}
-            src={"/1.png"}
-            alt="Popular blog"
-          />
-          <div className="detail">
-            <h4>This is a blog title </h4>
-            <p> 2 dec 2023 </p>
-          </div>
-        </Link>
-        <Link href={`/blogDetail`}>
-          <Image
-            className={styles.image}
-            width={105}
-            height={105}
-            src={"/1.png"}
-            alt="Popular blog"
-          />
-          <div className="detail">
-            <h4>This is a blog title </h4>
-            <p> 2 dec 2023 </p>
-          </div>
-        </Link>
-        <Link href={`/blogDetail`}>
-          <Image
-            className={styles.image}
-            width={105}
-            height={105}
-            src={"/1.png"}
-            alt="Popular blog"
-          />
-          <div className="detail">
-            <h4>This is a blog title </h4>
-            <p> 2 dec 2023 </p>
-          </div>
-        </Link>
-        {/* );
-        })} */}
+        {popularBlogs.slice(0, 5).map((blog, i) => {
+          const { title, blogImgUrl, date, blogID } = blog.blogData;
+          return (
+            <Link key={i} href={`/blog/${blogID}`}>
+              <Image
+                className={styles.image}
+                width={105}
+                height={105}
+                src={blogImgUrl}
+                alt="Popular blog"
+              />
+              <div className="detail">
+                <h4> {reduceText(title, 50)} </h4>
+                <p> {getDate(date)}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

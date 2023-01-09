@@ -7,8 +7,12 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/HeroSwiper.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useContext } from "react";
+import { GlobalContext } from "./Context";
 
-export default function HeroSwiper() {
+export default function HeroSwiper({ blogs }) {
+  const { reduceText } = useContext(GlobalContext);
+
   return (
     <section className={styles.heroSwiper}>
       <Swiper
@@ -38,90 +42,30 @@ export default function HeroSwiper() {
         modules={[Pagination]}
         className={styles.mySwiper}
       >
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <img src={"/1.png"} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <img src={"/1.png"} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <img src={"/1.png"} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <img src={"/1.png"} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <Image src={"/1.png"} width={200} height={200} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className={styles.SwiperSlide}>
-          <div className={styles.image}>
-            <img src={"/1.png"} alt="Image" />
-            <div className={styles.overlay}></div>
-          </div>
-          <div className={styles.swiperBlogDetails}>
-            <p> Sports </p>
-            <h1>Misconceptions Related to Quran and Muslims</h1>
-            <Link href={`/blogDetail`}>
-              Read more
-              <FontAwesomeIcon className={styles.icon} icon={faArrowRight} />
-            </Link>
-          </div>
-        </SwiperSlide>
+        {blogs.map((blog, i) => {
+          const { blogImgUrl, cetagory, title, blogID } = blog.blogData;
+          return (
+            <SwiperSlide key={i} className={styles.SwiperSlide}>
+              <div className={styles.image}>
+                <Image src={blogImgUrl} width={200} height={200} alt="Image" />
+                <div className={styles.overlay}></div>
+              </div>
+              <div className={styles.swiperBlogDetails}>
+                <p> {cetagory} </p>
+                <Link className={styles.title} href={`/blog/${blogID}`}>
+                  {reduceText(title, 65)}...
+                </Link>
+                <Link href={`/blog/${blogID}`}>
+                  Read more
+                  <FontAwesomeIcon
+                    className={styles.icon}
+                    icon={faArrowRight}
+                  />
+                </Link>
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </section>
   );

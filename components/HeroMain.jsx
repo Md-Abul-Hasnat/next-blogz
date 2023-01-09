@@ -4,9 +4,7 @@ import { faBlog } from "@fortawesome/free-solid-svg-icons";
 import HomeRightPart from "./HomeRightPart";
 import BlogCard from "./BlogCard";
 
-const HeroMain = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-
+const HeroMain = ({ blogs }) => {
   return (
     <section className={styles.heroMain}>
       <h1>
@@ -14,12 +12,12 @@ const HeroMain = () => {
       </h1>
       <div className={styles.heroMainWrapper}>
         <div className={styles.heroLeft}>
-          {arr.map((blog, i) => {
-            return <BlogCard key={i} />;
+          {blogs.map((blog, i) => {
+            return <BlogCard data={blog.blogData} key={i} />;
           })}
         </div>
         <div className={styles.heroRight}>
-          <HomeRightPart />
+          <HomeRightPart blogs={blogs} />
         </div>
       </div>
     </section>
