@@ -30,6 +30,21 @@
   gap: 20px;
 }
 
+.btn {
+  width: fit-content;
+  padding: 7px 35px;
+  background-color: var(--second-clr);
+  border: 1px solid var(--second-clr);
+  color: var(--white);
+  margin-top: 5px;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: black;
+}
+
 @media screen and (max-width: 1050px) {
   .heroMainWrapper {
     width: 90%;

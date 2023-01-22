@@ -42,7 +42,7 @@ const Context = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ user, setUser, setBlogs, reduceText, getDate }}
+      value={{ user, blogs, setUser, setBlogs, reduceText, getDate }}
     >
       {children}
     </GlobalContext.Provider>

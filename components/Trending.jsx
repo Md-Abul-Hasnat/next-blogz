@@ -9,9 +9,9 @@ import { GlobalContext } from "./Context";
 const Trending = ({ blogs }) => {
   const { reduceText, getDate } = useContext(GlobalContext);
 
-  const trendingBlog = blogs.filter(
-    (blog) => blog.blogData.isTrending === "yes"
-  );
+  const trendingBlog = blogs
+    .filter((blog) => blog.blogData.isTrending === "yes")
+    .slice(0, 6);
 
   return (
     <section className={styles.trending}>

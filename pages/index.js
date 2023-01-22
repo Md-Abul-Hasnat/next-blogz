@@ -6,6 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../components/firebaseConfig";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../components/Context";
+import PopularCetagory from "../components/PopularCetagory";
 
 export default function Home({ allBlogs }) {
   const { setBlogs } = useContext(GlobalContext);
@@ -19,6 +20,7 @@ export default function Home({ allBlogs }) {
       <HeroSwiper blogs={allBlogs} />
       <Trending blogs={allBlogs} />
       <HeroMain blogs={allBlogs} />
+      <PopularCetagory blogs={allBlogs} />
     </section>
   );
 }

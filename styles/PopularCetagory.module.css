@@ -1,0 +1,150 @@
+.PopularCetagory {
+  width: 100%;
+  margin: 70px 0px;
+}
+
+.PopularCetagory h1 {
+  margin-left: 7.5%;
+  font-size: 1.6rem;
+  color: var(--second-clr);
+}
+
+.PopularCetagoryWrapper {
+  width: 85%;
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.cetagoryName {
+  background-color: var(--second-clr);
+  color: var(--white);
+  margin-bottom: 25px;
+}
+
+.cetagoryName h2 {
+  font-size: 1.2rem;
+  width: fit-content;
+  padding: 6px 95px 6px 5px;
+  background-color: var(--third-clr);
+  border-radius: 0 60px 0 0;
+}
+
+.cetagoryBlogs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.cetagoryBlogs article {
+  display: flex;
+  gap: 15px;
+}
+
+.cetagoryBlogs article img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.blogRight {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.blogRight h2 {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--second-clr);
+}
+
+.blogRight p {
+  font-size: 0.8rem;
+  color: var(--second-clr);
+}
+
+.icon {
+  width: 12px;
+  color: var(--second-clr);
+}
+
+@media screen and (max-width: 950px) {
+  .PopularCetagory h1 {
+    margin-left: 5%;
+  }
+
+  .PopularCetagoryWrapper {
+    width: 90%;
+  }
+
+  .blogRight h2 {
+    font-size: 0.9rem;
+  }
+  .blogRight {
+    row-gap: 5px;
+  }
+  .blogRight p {
+    font-size: 0.7rem;
+  }
+
+  .icon {
+    width: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .PopularCetagoryWrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    row-gap: 50px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .PopularCetagory h1 {
+    font-size: 1.4rem;
+  }
+
+  .PopularCetagoryWrapper {
+    gap: 15px;
+    row-gap: 50px;
+  }
+  .cetagoryName h2 {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .PopularCetagory h1 {
+    font-size: 1.4rem;
+  }
+
+  .PopularCetagoryWrapper {
+    grid-template-columns: 1fr;
+    row-gap: 35px;
+  }
+  .cetagoryBlogs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+  .blogRight h2 {
+    font-size: 1rem;
+  }
+  .blogRight p {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 370px) {
+  .PopularCetagory h1 {
+    font-size: 1.2rem;
+    margin-bottom: -10px;
+  }
+
+  .blogRight h2 {
+    font-size: 0.9rem;
+  }
+  .blogRight p {
+    font-size: 0.8rem;
+  }
+}

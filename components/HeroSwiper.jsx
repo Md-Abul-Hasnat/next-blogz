@@ -52,10 +52,10 @@ export default function HeroSwiper({ blogs }) {
               </div>
               <div className={styles.swiperBlogDetails}>
                 <p> {cetagory} </p>
-                <Link className={styles.title} href={`/blog/${blogID}`}>
+                <Link className={styles.title} href={`/${blogID}`}>
                   {reduceText(title, 65)}...
                 </Link>
-                <Link href={`/blog/${blogID}`}>
+                <Link href={`/${blogID}`}>
                   Read more
                   <FontAwesomeIcon
                     className={styles.icon}
