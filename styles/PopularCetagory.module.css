@@ -37,12 +37,12 @@
   row-gap: 25px;
 }
 
-.cetagoryBlogs article {
+.cetagoryBlogs a {
   display: flex;
   gap: 15px;
 }
 
-.cetagoryBlogs article img {
+.cetagoryBlogs a img {
   width: 80px;
   height: 80px;
   object-fit: cover;

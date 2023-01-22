@@ -29,9 +29,9 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {sportsBlogs.map((blog, i) => {
-              const { blogImgUrl, title, date } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
-                <article key={i}>
+                <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />
                   <div className={styles.blogRight}>
                     <h2>{reduceText(title, 50)}...</h2>
@@ -40,7 +40,7 @@ const PopularCetagory = ({ blogs }) => {
                       {getDate(date)}
                     </p>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>
@@ -51,9 +51,9 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {programmingBlogs.map((blog, i) => {
-              const { blogImgUrl, title, date } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
-                <article key={i}>
+                <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />
                   <div className={styles.blogRight}>
                     <h2>{reduceText(title, 50)}...</h2>
@@ -62,7 +62,7 @@ const PopularCetagory = ({ blogs }) => {
                       {getDate(date)}
                     </p>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>
@@ -73,9 +73,9 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {politicsBlogs.map((blog, i) => {
-              const { blogImgUrl, title, date } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
-                <article key={i}>
+                <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />
                   <div className={styles.blogRight}>
                     <h2>{reduceText(title, 50)}...</h2>
@@ -84,7 +84,7 @@ const PopularCetagory = ({ blogs }) => {
                       {getDate(date)}
                     </p>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>

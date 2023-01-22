@@ -22,7 +22,7 @@ const BlogCard = ({ data }) => {
 
   return (
     <article className={styles.mainBlogCard}>
-      <Link href={`/blog/${blogID}`} className={styles.blogCard}>
+      <Link href={`/${blogID}`} className={styles.blogCard}>
         <div className={styles.top}>
           <Image
             className={styles.image}

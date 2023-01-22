@@ -21,9 +21,9 @@ const Trending = ({ blogs }) => {
       </h3>
       <div className={styles.trendingWrapper}>
         {trendingBlog.map((blog, i) => {
-          const { author, authorImgUrl, title, date } = blog.blogData;
+          const { author, authorImgUrl, title, date, blogID } = blog.blogData;
           return (
-            <Link key={i} href={"/"} className={styles.trendingBlog}>
+            <Link key={i} href={`/${blogID}`} className={styles.trendingBlog}>
               <div className={styles.top}>
                 <Image
                   src={authorImgUrl}

@@ -72,7 +72,7 @@ const HomeRightPart = ({ blogs }) => {
         {popularBlogs.slice(0, 5).map((blog, i) => {
           const { title, blogImgUrl, date, blogID } = blog.blogData;
           return (
-            <Link key={i} href={`/blog/${blogID}`}>
+            <Link key={i} href={`/${blogID}`}>
               <Image
                 className={styles.image}
                 width={105}
