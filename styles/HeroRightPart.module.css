@@ -131,11 +131,14 @@
 }
 @media screen and (max-width: 850px) {
   .aboutBlogz {
-    padding: 20px 40px;
+    padding: 20px;
   }
   .exploreTopics {
     margin-top: 80px;
-    padding: 20px 40px;
+    padding: 20px;
+  }
+  .exploreTopics ul a small {
+    font-size: 1.1rem;
   }
   .popularPosts {
     margin-top: 80px;
@@ -149,7 +152,7 @@
   }
 
   .popularPosts a h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 @media screen and (max-width: 450px) {

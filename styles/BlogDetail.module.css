@@ -1,6 +1,6 @@
 .blogDetail {
   width: 100%;
-  margin: 120px 0;
+  margin: 110px 0;
 }
 
 .blogDetailWrapper {
@@ -60,4 +60,58 @@
   margin-top: 25px;
   text-align: justify;
   white-space: pre-wrap;
+}
+
+@media screen and (max-width: 950px) {
+  .blogDetailWrapper {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .left > h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+}
+@media screen and (max-width: 750px) {
+  .blogDetailWrapper {
+    width: 90%;
+    grid-template-columns: 100%;
+    gap: 0%;
+    row-gap: 50px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .blogImg {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .left > h3 {
+    font-size: 0.9rem;
+  }
+  .blogImg {
+    height: 300px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .left > h1 {
+    font-size: 1.3rem;
+  }
+
+  .left > h3 {
+    font-size: 0.8rem;
+  }
+  .blogImg {
+    height: 250px;
+  }
+  .authorImg {
+    width: 30px;
+    height: 30px;
+  }
+  .blogText {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
 }

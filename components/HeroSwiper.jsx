@@ -53,9 +53,9 @@ export default function HeroSwiper({ blogs }) {
               <div className={styles.swiperBlogDetails}>
                 <p> {cetagory} </p>
                 <Link className={styles.title} href={`/${blogID}`}>
-                  {reduceText(title, 65)}...
+                  {reduceText(title, 50)}...
                 </Link>
-                <Link href={`/${blogID}`}>
+                <Link className={styles.readBtn} href={`/${blogID}`}>
                   Read more
                   <FontAwesomeIcon
                     className={styles.icon}
