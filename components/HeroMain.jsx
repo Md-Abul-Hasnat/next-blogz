@@ -16,7 +16,7 @@ const HeroMain = ({ blogs }) => {
           {blogs.slice(0, 8).map((blog, i) => {
             return <BlogCard data={blog.blogData} key={i} />;
           })}
-          <Link className={styles.btn} href={"/"}>
+          <Link className={styles.btn} href={"/allBlogs"}>
             View all blogs
           </Link>
         </div>
