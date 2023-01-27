@@ -20,9 +20,27 @@
 body {
   font-family: var(--font-family);
   background-color: var(--main-clr);
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--main-clr);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 100%;
+  border-radius: 30px;
+  background-color: var(--second-clr);
+}
+
+@media screen and (max-width: 1000px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
