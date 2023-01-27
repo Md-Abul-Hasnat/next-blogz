@@ -10,3 +10,66 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.loadBtn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 8px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--second-clr);
+  color: var(--second-clr);
+  font-weight: 500;
+  transition: 0.4s;
+}
+
+.loadBtn:hover {
+  background-color: var(--second-clr);
+  color: var(--white);
+}
+
+.loading {
+  margin: 50px 0;
+  width: 100%;
+  height: 100vh;
+}
+
+@media screen and (max-width: 1000px) {
+  .allBlogsWrapper {
+    width: 95%;
+    gap: 10px;
+    row-gap: 15px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .allBlogsWrapper {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .loadBtn {
+    margin: 40px auto 0;
+    padding: 8px 25px;
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .allBlogsWrapper {
+    width: 95%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .allBlogsWrapper {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+}
+@media screen and (max-width: 350px) {
+  .allBlogsWrapper {
+    width: 92%;
+  }
+  .loadBtn {
+    font-size: 0.8rem;
+  }
+}
