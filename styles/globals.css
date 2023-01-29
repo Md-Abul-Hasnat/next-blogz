@@ -29,13 +29,12 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
   background-color: var(--main-clr);
 }
 
 ::-webkit-scrollbar-thumb {
   width: 100%;
-  border-radius: 30px;
   background-color: var(--second-clr);
 }
 

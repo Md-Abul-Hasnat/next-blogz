@@ -41,7 +41,7 @@ const HomeRightPart = ({ blogs }) => {
           the right people.
         </p>
         <div className={styles.socialIcons}>
-          <FontAwesomeIcon className={styles.fbIcon} icon={faFacebookF} />
+          <FontAwesomeIcon className={styles.icon} icon={faFacebookF} />
           <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
           <FontAwesomeIcon className={styles.icon} icon={faInstagram} />
           <FontAwesomeIcon className={styles.icon} icon={faLinkedinIn} />

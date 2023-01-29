@@ -68,7 +68,7 @@ const About = ({ blogs }) => {
             <h2>Follow us on</h2>
             <div className={styles.socialIcons}>
               <FontAwesomeIcon
-                className={`${styles.icon} ${styles.facebook}`}
+                className={styles.icon}
                 icon={faFacebookF}
               />
               <FontAwesomeIcon className={styles.icon} icon={faTwitter} />

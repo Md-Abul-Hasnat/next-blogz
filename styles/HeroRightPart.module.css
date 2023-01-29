@@ -20,14 +20,10 @@
   margin-top: 20px;
 }
 
-.fbIcon {
-  width: 16px;
-  color: var(--second-clr);
-}
 
 .socialIcons .icon {
-  margin-left: 20px;
-  width: 22px;
+  margin-left: 25px;
+  font-size: 24px;
   color: var(--second-clr);
   cursor: pointer;
 }

@@ -64,41 +64,26 @@
   font-size: 0.9rem;
 }
 .title {
+  display: block;
   width: 100% !important;
-  margin: 10px 0;
+  margin: 5px 0 10px;
   line-height: 1.4;
   font-size: 1.3rem;
   color: var(--white);
+  transition: .5s;
 }
 
-.swiperBlogDetails .icon {
-  margin-left: 5px;
-  width: 15px;
-}
-
-.readBtn {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  width: fit-content;
-  margin: 0 5px 5px auto;
-  color: var(--white);
-  transition: 0.3s;
-}
-
-.swiperBlogDetails a:hover {
+.title:hover{
   color: var(--third-clr);
 }
+
 
 .swiper-pagination-bullet {
   background-color: black;
 }
 
 @media screen and (max-width: 1000px) {
-  .readBtn {
-    padding: 4px 8px;
-    font-size: 0.9rem;
-  }
+  
   .title {
     font-size: 1.1rem;
   }
