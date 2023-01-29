@@ -14,6 +14,7 @@ const blogDetail = ({ blogs }) => {
   const { getDate } = useContext(GlobalContext);
 
   const router = useRouter();
+  // a
 
   const selectedBlog = blogs?.find(
     (blog) => blog.blogData.blogID === router.query?.blogid
