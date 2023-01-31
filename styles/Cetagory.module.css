@@ -4,7 +4,7 @@
 
 .cetagoryWrapper{
     width: 85%;
-    margin:25px auto 50px;
+    margin: 25px auto 50px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
@@ -19,6 +19,27 @@
     padding-bottom: 10px;
     color: var(--second-clr);
     text-transform: uppercase;
+}
+
+.notFound{
+    color: var(--second-clr);
+    text-transform: capitalize;
+    font-size: 1.6rem;
+}
+
+.load{
+    display: block;
+    margin: 40px auto 70px;
+    padding: 9px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid var(--second-clr);
+    transition: .4s;
+}
+
+.load:hover{
+    background-color: var(--second-clr);
+    color: var(--white);
 }
 
 @media screen and (max-width:1000px) {
@@ -58,5 +79,10 @@
         margin: 120px 5% 0;
         font-size: 1.3rem;
         letter-spacing: 0;
+    }.notFound{
+        font-size: 1.4rem;
+    }.load{
+        padding: 7px 20px;
+        font-size: .9rem;
     }
 }
