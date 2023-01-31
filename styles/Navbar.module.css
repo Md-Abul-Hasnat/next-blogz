@@ -169,14 +169,14 @@
     display: block;
     color: var(--white);
     cursor: pointer;
-    font-size: 20px;
+    width: 20px;
   }
 
   .faXmark {
     display: block;
     color: var(--white);
-    width:  20px;
-    height: 20px;
+    width:  22px;
+    height: 22px;
     position: absolute;
     top: 22px;
     right: 21px;

@@ -17,15 +17,18 @@
 }
 
 .aboutBlogz .socialIcons {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 
 .socialIcons .icon {
   margin-left: 25px;
-  font-size: 24px;
+  width: 25px;
   color: var(--second-clr);
   cursor: pointer;
+}
+.socialIcons .icon:first-child {
+  width:17px;
 }
 
 .exploreTopics {

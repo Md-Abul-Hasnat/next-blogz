@@ -30,6 +30,7 @@ const BlogCard = ({ data }) => {
             alt="blog"
             width={400}
             height={300}
+            priority={true}
           />
           <p className={styles.cetagoryName}> {cetagory} </p>
         </div>

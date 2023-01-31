@@ -44,7 +44,6 @@ const AllBlogs = () => {
 
     setLastDoc(lastDocument);
     setBlogLength([...allBlogs, ...data].length);
-    console.log(allBlogs, blogsLength);
     if (allBlogs.length === blogsLength) {
       setError(true);
       toast.success("No more blogs available!!");
