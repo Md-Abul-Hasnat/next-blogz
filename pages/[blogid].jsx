@@ -24,7 +24,7 @@ const blogDetail = ({ blogs }) => {
     selectedBlog?.blogData;
 
   const reletedBlogs = blogs?.filter(
-    (blog) => blog.blogData.cetagory === cetagory
+    (blog) => blog.blogData.cetagory === cetagory && blog !== selectedBlog
   );
 
   return (

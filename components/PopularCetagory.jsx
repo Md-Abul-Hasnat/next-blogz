@@ -28,7 +28,7 @@ const PopularCetagory = ({ blogs }) => {
             <h2>Sports</h2>
           </div>
           <div className={styles.cetagoryBlogs}>
-            {sportsBlogs.map((blog, i) => {
+            {sportsBlogs.slice(0,3).map((blog, i) => {
               const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
                 <Link href={`/${blogID}`} key={i}>
@@ -50,7 +50,7 @@ const PopularCetagory = ({ blogs }) => {
             <h2>Programming</h2>
           </div>
           <div className={styles.cetagoryBlogs}>
-            {programmingBlogs.map((blog, i) => {
+            {programmingBlogs.slice(0,3).map((blog, i) => {
               const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
                 <Link href={`/${blogID}`} key={i}>
@@ -72,7 +72,7 @@ const PopularCetagory = ({ blogs }) => {
             <h2>Educaion</h2>
           </div>
           <div className={styles.cetagoryBlogs}>
-            {politicsBlogs.map((blog, i) => {
+            {politicsBlogs.slice(0,3).map((blog, i) => {
               const { blogImgUrl, title, date, blogID } = blog.blogData;
               return (
                 <Link href={`/${blogID}`} key={i}>
