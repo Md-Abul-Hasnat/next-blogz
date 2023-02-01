@@ -1,0 +1,200 @@
+.subHeader {
+    position: relative;
+    margin-top: 50px;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .subHeader img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .subHeader .mainTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  }
+  
+  .mainTitle h1 {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: var(--white);
+  }
+
+.contact {
+    margin: 140px 0 80px;
+    width: 100%;
+  }
+  
+  .contactWrapper {
+    width: 85%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3%;
+  }
+  
+  .contactLeft {
+    width: 100%;
+    background-color: var(--second-clr);
+    color: var(--white);
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .contactLeft .envelop {
+    width: 8rem ;
+  }
+  
+  .contactLeft p {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .contactRight h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--second-clr);
+  }
+  
+  .contactRight input {
+    padding: 15px 10px;
+    margin-top: 15px;
+    background-color: rgb(221, 230, 233);
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  .contactRight::placeholder {
+    font-size: 1rem;
+  }
+  
+  .contactRight textarea {
+    padding: 15px 10px;
+    margin-top: 15px;
+    background-color: rgb(221, 230, 233);
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+  
+  .contactRight textarea::placeholder {
+    font-size: 1.2rem;
+  }
+  
+  .sendBtn {
+    padding: 10px 35px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: var(--second-clr);
+    color: var(--white);
+    border: 1px solid var(--second-clr);
+    transition: .4s;
+  }
+
+  .sendBtn:hover{
+    background-color:var(--white);
+    color: var(--second-clr);
+  }
+  
+  @media screen and (max-width: 900px) {
+
+    .contactWrapper {
+        width: 85%;
+        grid-template-columns: 1fr;
+        row-gap: 70px;
+      }
+      .contactLeft p {
+        font-size: 1.3rem;
+        margin-top: 25px;
+      }
+  }
+  @media screen and (max-width: 700px) {
+    .contactLeft .envelop {
+     width: 5rem;
+    }
+  
+    .contactLeft p {
+      font-size: 1.2rem;
+    }
+    .contactRight h1 {
+      font-size: 2rem;
+    }
+  
+    .contactRight input {
+      font-size: 0.9rem;
+    }
+  
+    .contactRight textarea {
+      font-size: 0.9rem;
+      height: 200px;
+    }
+    .contactRight ::placeholder {
+      font-size: 1rem;
+    }
+  
+    .contactRight textarea::placeholder {
+      font-size: 1rem;
+    }
+    .sendBtn {
+      padding: 8px 30px;
+      font-size: 1rem;
+    }
+  }
+  
+  
+
+  @media screen and (max-width: 500px) {
+    .mainTitle h1 {
+      font-size: 2.5rem;
+    }
+    
+  }
+  
+  @media screen and (max-width: 370px) {
+    .contactLeft {
+      padding:40px 20px;
+    }
+   
+    .contactLeft .envelop {
+      width: 3rem;
+    }
+  
+    .contactLeft p {
+      font-size: 1rem;
+      margin-top: 15px;
+    }
+    .sendBtn {
+      font-size: .9rem;
+    }
+    .mainTitle h1 {
+        font-size: 2rem;
+      }
+  }
