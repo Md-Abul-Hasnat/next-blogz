@@ -45,9 +45,7 @@ const Auth = () => {
     if (form.email && form.password && form.username && form.profilePic) {
       createUserWithEmailAndPassword(auth, form.email, form.password)
         .then((userCredential) => {
-          toast.success("Successfully signed in");
           const user = userCredential.user;
-
           setUser(user);
           updateProfile(auth.currentUser, {
             displayName: form.username,
@@ -55,11 +53,13 @@ const Auth = () => {
           })
             .then(() => {
               localStorage.setItem("user", JSON.stringify(user));
+              router.push("/");
+              toast.success("Successfully signed in");
             })
             .catch((error) => {
               toast.error(error);
             });
-          router.push("/");
+         
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -77,8 +77,8 @@ const Auth = () => {
         const user = userCredential.user;
         setUser(user);
         localStorage.setItem("user", JSON.stringify(user));
-        toast.success("Signed in successfully");
         router.push("/");
+        toast.success("Signed in successfully");
       })
       .catch((error) => {
         const errorMessage = error.message;

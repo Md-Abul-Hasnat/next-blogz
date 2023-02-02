@@ -4,10 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { GlobalContext } from "./Context";
-import { toast } from "react-toastify";
+import Image from "next/image";
 
 const Navbar = () => {
-  const { user, setUser } = useContext(GlobalContext);
+
+  const { user} = useContext(GlobalContext);
+  
+  const userDetail = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null
 
   const [click, setClick] = useState(false);
   const [stickyNav, setStickyNav] = useState(false);
@@ -27,11 +30,6 @@ const Navbar = () => {
     setClick(!click);
   }
 
-  function signOut() {
-    setUser({});
-    localStorage.setItem("user", JSON.stringify({}));
-    toast.success("Successfully signed out!");
-  }
 
   return (
     <nav
@@ -70,9 +68,9 @@ const Navbar = () => {
         </li>
         <li>
           {user?.email ? (
-            <button onClick={signOut} className={styles.signoutBtn}>
-              Sign out
-            </button>
+          <Link onClick={handleClick} href={"/profile"}>
+           <Image src={userDetail.photoURL} className={styles.profile} alt={user} width={50} height={50} />
+          </Link>
           ) : (
             <Link
               className={styles.signIn}

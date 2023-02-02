@@ -1,0 +1,121 @@
+.profile{
+    width: 100%;
+    margin-top: 110px;
+}
+
+.profile > h1{
+    margin-left: 7.5%;
+    margin-bottom: 20px;
+    color: var(--second-clr);
+}
+
+.profile > h2{
+    margin-top: 40px;
+    margin-left: 7.5%;
+    color: var(--second-clr);
+    text-transform: uppercase;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:  0 7.5% ;
+    border-bottom: 1px solid var(--second-clr);
+    padding: 0 ;
+}
+.logOut{
+    padding: 8px 20px;
+    border: 1px solid var(--second-clr);
+    font-size: .9rem;
+    background-color: var(--second-clr);
+    color: var(--white);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.logOut:hover{
+    background-color: rgb(206, 38, 38);
+    border-color: rgb(206, 38, 38) ;
+}
+
+.userInfo{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+   
+    padding-bottom: 20px;
+}
+
+.userImg{
+    border-radius: 50%;
+}
+
+.userName h1{
+    font-size: 1.6rem;
+    color: var(--third-clr);
+    letter-spacing: 1px;
+}
+
+.userName p{
+    font-size: 1rem;
+    margin-top: 3px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--second-clr);
+}
+
+.profileWrapper{
+    width: 85%;
+    margin: 30px auto ;
+
+}
+
+.blogCard{
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: .5px solid var(--second-clr);
+}
+.blogCard:last-child{
+    border-bottom: none ;
+}
+
+.blogCard > img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.blogRight > h1{
+    font-size: 1.5rem;
+    color: var(--second-clr);
+}
+
+.blogRight > h3{
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: var(--second-clr);
+}
+
+.blogRight > p{
+    color: var(--second-clr);
+}
+
+.icons{
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.icon{
+    width: 17px;
+    color: var(--second-clr);
+}
+.icon:last-child{
+    width: 15px;
+    color: rgb(202, 53, 53);
+}

@@ -48,6 +48,15 @@
   cursor: pointer;
 }
 
+.profile{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: .5px solid var(--text-clr);
+  cursor: pointer;
+  transition: .3s;
+}
+
 .signoutBtn {
   background-color: var(--third-clr);
   color: var(--white);
