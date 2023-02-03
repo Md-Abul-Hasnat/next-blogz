@@ -1,6 +1,9 @@
 .profile{
     width: 100%;
-    margin-top: 110px;
+    margin-top: 78px;
+    padding-top: 40px;
+    border: 1px solid lightgray;
+    position: relative;
 }
 
 .profile > h1{
@@ -43,7 +46,6 @@
     display: flex;
     gap: 20px;
     align-items: center;
-   
     padding-bottom: 20px;
 }
 
@@ -68,7 +70,6 @@
 .profileWrapper{
     width: 85%;
     margin: 30px auto ;
-
 }
 
 .blogCard{
@@ -103,6 +104,7 @@
 
 .blogRight > p{
     color: var(--second-clr);
+    font-size: 15px;
 }
 
 .icons{
@@ -118,4 +120,55 @@
 .icon:last-child{
     width: 15px;
     color: rgb(202, 53, 53);
+}
+
+.alert{
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 100px 50px;
+    text-align: center;
+    background-color: var(--second-clr);
+    z-index: 101;
+  
+}
+
+.alert > h2{
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom:30px;
+}
+
+.alert button{
+    padding: 6px 25px;
+    border: none;
+}
+
+.alert  button:first-child{    
+    margin-right: 30px;
+}
+
+.overlay{
+    width: 100vw;
+    height: 100% ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    z-index: 100;
+}
+
+.noBlog{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 20px 0;
+    color: var(--second-clr);
+}
+
+.loading{
+    
 }
