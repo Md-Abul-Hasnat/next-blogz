@@ -30,8 +30,8 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         toast.success("Successfully signed out!");
       }
 
-    function editBlog(){
-        setAlert(true)
+    function editBlog(id){
+        console.log(id)
     }
 
   async function deleteBlog(id){
@@ -115,7 +115,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
                             <p> {getDate(date)} </p>
                             <div className={style.icons}>
                             <FontAwesomeIcon
-                                onClick={editBlog}
+                                onClick={()=> editBlog(id)}
                                 className={style.icon}
                                 icon={faEdit}
                                 />
