@@ -14,10 +14,11 @@ import { doc, deleteDoc } from "firebase/firestore";
 const Profile = () => {
 
 const router = useRouter()
-const {user,setUser,getDate} = useContext(GlobalContext)
+const {user,setUser,getDate,reduceText} = useContext(GlobalContext)
 const [allBlogs,setAllBlogs] = useState()
 const [loading,setLoading] = useState(false)
 const [alert,setAlert] = useState(false)
+const [blogID,setBlogID] = useState()
 
 const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
 
@@ -34,13 +35,19 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
     }
 
   async function deleteBlog(id){
-        // setAlert(true)
         try {
+            setAlert(false)
             await deleteDoc(doc(db, "blogs", id));
             toast.success("Blog deleted successfully!")
         } catch (error) {
+            setAlert(false)
             toast.error('Something went wrong!')
         }
+    }
+
+    function setID(id){
+        setBlogID(id)
+        setAlert(true)
     }
 
       useEffect(() => {
@@ -73,7 +80,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
                 alert && <section className={style.alert}>
                     <h2>Do you want to delete this blog ?</h2>
                     <div>
-                        <button>Yes</button>
+                        <button onClick={()=> deleteBlog(blogID)}>Yes</button>
                         <button onClick={()=> setAlert(false)}>No</button>
                     </div>
                 </section>
@@ -93,17 +100,17 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         <h2>My blogs</h2>
         <main className={style.profileWrapper}>
           
-        {loading && <h1 className={style.loading}>Loading</h1>}    
+        {loading && <Image src={'/spinner.gif'} width={60} height={60} className={style.loading}alt="spinner" />}    
         { myBlogs?.length === 0  ? <h1 className={style.noBlog}>No blogs available</h1> :  myBlogs?.map((blog,i)=> {
 
-                const {blogImgUrl,title,cetagory,date} = blog.blogData
                 const {id} = blog
+                const {blogImgUrl,title,cetagory,date} = blog.blogData
 
                 return(
                     <article className={style.blogCard} key={i}>
                         <Image src={blogImgUrl} alt={"blog Image"} width={150} height={150} />
                         <div className={style.blogRight}>
-                            <h1> {title} </h1>
+                            <h1> {reduceText(title,80)}... </h1>
                             <h3>{cetagory} </h3>
                             <p> {getDate(date)} </p>
                             <div className={style.icons}>
@@ -113,7 +120,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
                                 icon={faEdit}
                                 />
                                 <FontAwesomeIcon
-                                onClick={()=> deleteBlog(id)}
+                                onClick={()=> setID(id)}
                                 className={style.icon}
                                 icon={faTrash}
                                 />
