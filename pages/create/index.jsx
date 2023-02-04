@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 
 const CreateBlog = () => {
   const router = useRouter();
-  const { user } = useContext(GlobalContext);
+  const { user,edit,setEdit } = useContext(GlobalContext);
 
   useEffect(() => {
     setBlogData({
@@ -25,7 +25,28 @@ const CreateBlog = () => {
     });
   }, [user]);
 
-  const date = new Date().getTime();
+  useEffect(()=>{
+    if(edit.value){
+
+      const {blogImgUrl,title,cetagory,isTrending,body,blogID,date } = edit?.data?.blogData
+
+      setBlogData({
+        title,
+        cetagory,
+        isTrending,
+        body,
+        blogImgUrl,
+        blogID,
+        date,
+        author: user?.displayName,
+        authorImgUrl: user?.photoURL,
+        authorID: user?.uid,
+      })
+    }
+
+  },[])
+
+  const time = new Date().getTime();
 
   const [blogData, setBlogData] = useState({
     title: "",
@@ -34,11 +55,12 @@ const CreateBlog = () => {
     body: "",
     blogImgUrl: "",
     blogID: uuidv4(),
-    date: date,
+    date: time,
     author: user?.displayName,
     authorImgUrl: user?.photoURL,
     authorID: user?.uid,
   });
+
 
   function uploadImage(e) {
     const storageRef = ref(storage, `images/${e.target.value}`);
@@ -87,6 +109,31 @@ const CreateBlog = () => {
     }
   }
 
+  async function editBlog(e){
+    e.preventDefault()
+
+    const blogRef = doc(db, "blogs", edit.data.id);
+   
+     await updateDoc(blogRef,{blogData});
+    toast.success("Blog updated successfully!")
+
+    setEdit({value : false, data : {}})
+
+    setBlogData({
+      title:'',
+      cetagory:'',
+      isTrending:'',
+      body:'',
+      blogImgUrl:'',
+      blogID:'',
+      date:'',
+      author: user?.displayName,
+      authorImgUrl: user?.photoURL,
+      authorID: user?.uid,
+    })
+    router.push("/")
+  }
+
   return (
     <section
       className={styles.create}
@@ -100,8 +147,9 @@ const CreateBlog = () => {
       ) : (
         <section>
           <article className={styles.blogForm}>
-            <h1>Create Blog</h1>
-            <form className={styles.blogFormWrapper} onSubmit={publishBlog}>
+            {edit?.value ? <h1>Edit Blog</h1> : <h1>Create Blog</h1>}
+            
+            <form className={styles.blogFormWrapper} onSubmit={edit.value ? editBlog : publishBlog}>
               <Image
                 src={`${
                   blogData.blogImgUrl ? blogData.blogImgUrl : "/placeholder.jpg"

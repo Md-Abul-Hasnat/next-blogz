@@ -14,14 +14,13 @@ import { doc, deleteDoc } from "firebase/firestore";
 const Profile = () => {
 
 const router = useRouter()
-const {user,setUser,getDate,reduceText} = useContext(GlobalContext)
+const {user,setUser,getDate,reduceText,edit,setEdit} = useContext(GlobalContext)
 const [allBlogs,setAllBlogs] = useState()
 const [loading,setLoading] = useState(false)
 const [alert,setAlert] = useState(false)
 const [blogID,setBlogID] = useState()
 
 const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
-
 
     function signOut() {
         router.push('/')
@@ -30,8 +29,12 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         toast.success("Successfully signed out!");
       }
 
-    function editBlog(id){
-        console.log(id)
+    function editBlog(blog){
+    setEdit({
+        value : true,
+        data : blog
+    })
+    router.push("/create")
     }
 
   async function deleteBlog(id){
@@ -58,7 +61,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
     
     useEffect(() => {
         setLoading(true)
-        const unsub = onSnapshot(collection(db, "blogs"), (snapshot) => {
+         onSnapshot(collection(db, "blogs"), (snapshot) => {
           const allBlogs = [];
           snapshot.docs.forEach((doc) => {
             allBlogs.push({ id: doc.id, ...doc.data() });
@@ -67,9 +70,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
           setLoading(false);
         });
     
-        return () => {
-          unsub();
-        };
+       
       }, []);
 
   return (
@@ -115,7 +116,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
                             <p> {getDate(date)} </p>
                             <div className={style.icons}>
                             <FontAwesomeIcon
-                                onClick={()=> editBlog(id)}
+                                onClick={()=> editBlog(blog)}
                                 className={style.icon}
                                 icon={faEdit}
                                 />
