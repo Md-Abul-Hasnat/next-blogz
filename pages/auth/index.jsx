@@ -16,12 +16,14 @@ import { useRouter } from "next/router";
 import { GlobalContext } from "../../components/Context";
 
 const Auth = () => {
+  
+  const router = useRouter();
   const { setUser } = useContext(GlobalContext);
 
-  const router = useRouter();
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [image,setImage] = useState(null)
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -30,6 +32,18 @@ const Auth = () => {
   });
 
   //    functions
+
+  const readImage = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setImage(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
 
   function handleFormChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -101,6 +115,7 @@ const Auth = () => {
   }
 
   function uploadImage(e) {
+    readImage(e)
     const storageRef = ref(storage, `images/${e.target.value}`);
 
     uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
@@ -146,9 +161,7 @@ const Auth = () => {
                 <>
                   <Image
                     className={styles.profilePic}
-                    src={`${
-                      form.profilePic ? `${form.profilePic}` : "/pic.png"
-                    }`}
+                    src={  image ? image : "/pic.png"}
                     width={200}
                     height={200}
                     alt="Profile picture"
