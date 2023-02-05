@@ -8,7 +8,6 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../components/Context";
 import PopularCetagory from "../components/PopularCetagory";
 
-// test
 
 export default function Home({ allBlogs }) {
   const { setBlogs } = useContext(GlobalContext);
