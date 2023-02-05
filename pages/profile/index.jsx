@@ -101,7 +101,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         <h2>My blogs</h2>
         <main className={style.profileWrapper}>
           
-        {loading && <Image src={'/spinner.gif'} width={60} height={60} className={style.loading}alt="spinner" priority={true} /> }    
+        {loading && <img src={'/spinner.gif'}  className={style.loading} alt="spinner" /> }    
         { myBlogs?.length === 0  ? <h1 className={style.noBlog}>No blogs available</h1> :  myBlogs?.map((blog,i)=> {
 
                 const {id} = blog

@@ -94,11 +94,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.navMenu .hide{
-  transform: translateY(-200px);
-  transition: 0s !important;
-}
-
 
 @media screen and (max-width: 950px) {
   .navbar .logo {
@@ -146,7 +141,7 @@
 
   .profile{
     position: fixed;
-    top: 21px;
+    top: 18px;
     right:65px;
     width: 35px;
     height: 35px;
@@ -156,7 +151,7 @@
   .navbar li .signIn {
     font-size: .8rem;
     position: fixed;
-    top: 22px;
+    top: 18px;
     right:75px;
     padding: 9px 18px 2px;
     transition: .2s;
@@ -199,6 +194,11 @@
     padding: 3px;
     border-radius: 50%;
   }
+  .navMenu .hide{
+  transform: translateY(-200px);
+  transition: 0s !important;
+}
+
 }
 
 @media screen and (max-width: 450px) {
@@ -228,9 +228,9 @@
 @media screen and (max-width: 310px) {
  
   .profile{
-    top: 20px;
+    top: 19px;
     right:60px;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   }
 }
