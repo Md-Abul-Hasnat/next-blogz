@@ -13,18 +13,7 @@ const Navbar = () => {
   const userDetail = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null
 
   const [click, setClick] = useState(false);
-  const [stickyNav, setStickyNav] = useState(false);
 
-  useEffect(() => {
-    function showNav() {
-      if (window.scrollY > 0) {
-        setStickyNav(true);
-      } else {
-        setStickyNav(false);
-      }
-    }
-    window.addEventListener("scroll", showNav);
-  }, []);
 
   function handleClick() {
     setClick(!click);
@@ -33,9 +22,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={
-        stickyNav ? `${styles.navbar} ${styles.sticky}` : `${styles.navbar}`
-      }
+      className={ styles.navbar}
     >
       <Link href={"/"} className={styles.logo}>
         <h1>BLOGZ</h1>
@@ -68,13 +55,12 @@ const Navbar = () => {
         </li>
         <li>
           {user?.email ? (
-          <Link onClick={handleClick} href={"/profile"}>
-           <Image src={userDetail.photoURL} className={styles.profile} alt={user} width={50} height={50} />
+          <Link href={"/profile"}>
+           <Image src={userDetail.photoURL} className={click ? `${styles.profile} ${styles.hide}` : `${styles.profile}`} alt={user} width={50} height={50} />
           </Link>
           ) : (
             <Link
-              className={styles.signIn}
-              onClick={handleClick}
+            className={click ? `${styles.signIn} ${styles.hide}` : `${styles.signIn}`}
               href={"/auth"}
             >
               SIGN IN
