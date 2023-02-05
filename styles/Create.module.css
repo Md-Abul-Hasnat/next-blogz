@@ -253,6 +253,9 @@
   .blogFormWrapper img {
     height: 230px;
   }
+  .image {
+    height: 230px;
+  }
   .blogForm > h1 {
     font-size: 1.5rem;
     margin-top: 20px;
@@ -261,7 +264,7 @@
 @media screen and (max-width: 450px) {
   .warning {
     height: 250px;
-    width: 90%;
+    width: 90%; 
   }
   .warning h1 {
     font-size: 0.9rem;

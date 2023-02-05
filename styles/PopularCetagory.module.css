@@ -7,6 +7,14 @@
   margin-left: 7.5%;
   font-size: 1.6rem;
   color: var(--second-clr);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mainIcon{
+  width: 16px;
+  margin-bottom: 2px;
 }
 
 .PopularCetagoryWrapper {
@@ -62,11 +70,14 @@
 
 .blogRight p {
   font-size: 0.8rem;
+  display: flex;
+  align-items: center;
   color: var(--second-clr);
 }
 
 .icon {
   width: 12px;
+  margin-right: 5px;
   color: var(--second-clr);
 }
 
@@ -146,5 +157,8 @@
   }
   .blogRight p {
     font-size: 0.8rem;
+  }
+  .mainIcon{
+    width: 14px;
   }
 }

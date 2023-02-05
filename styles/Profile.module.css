@@ -306,6 +306,10 @@
     .icon:last-child{
         width: 10px;
     }
+    .loading{
+    width: 30px;
+    height: 30px;
+    }
 
 }
 

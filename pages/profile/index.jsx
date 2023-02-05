@@ -101,7 +101,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         <h2>My blogs</h2>
         <main className={style.profileWrapper}>
           
-        {loading && <Image src={'/spinner.gif'} width={60} height={60} className={style.loading}alt="spinner" />}    
+        {loading && <Image src={'/spinner.gif'} width={60} height={60} className={style.loading}alt="spinner" priority={true} /> }    
         { myBlogs?.length === 0  ? <h1 className={style.noBlog}>No blogs available</h1> :  myBlogs?.map((blog,i)=> {
 
                 const {id} = blog
@@ -109,7 +109,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
 
                 return(
                     <article className={style.blogCard} key={i}>
-                        <Image src={blogImgUrl} alt={"blog Image"} width={150} height={150} />
+                        <Image src={blogImgUrl} alt={"blog Image"} width={150} height={150} priority={true} />
                         <div className={style.blogRight}>
                             <h1> {reduceText(title,80)}... </h1>
                             <h3>{cetagory} </h3>

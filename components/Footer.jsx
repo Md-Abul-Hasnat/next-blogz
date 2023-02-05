@@ -27,58 +27,22 @@ const Footer = () => {
               <p>+1-123-456-78-89</p>
               <p>+1-123-456-78-89</p>
             </li>
-            <li>
-              <small>Working Hours:</small>
-              <p>Monday-Sunday: 07:00 - 22:00</p>
-            </li>
+           
             <li>
               <small>Email:</small>
-              <p>blackfit@gmail.com</p>
+              <p>blogz@gmail.com</p>
             </li>
           </ul>
         </article>
         <article className={styles.footerMid}>
-          <h2>BLOG POSTS</h2>
-
-          <Link href={`/blogs`} className={styles.blog}>
-            <Image
-              src={"/1.png"}
-              className={styles.blogImg}
-              width={100}
-              height={70}
-              alt="blog"
-            />
-            <div className={styles.title}>
-              <h3>How to build muscle as a vegan </h3>
-              <p> November 20 2022 </p>
-            </div>
-          </Link>
-          <Link href={`/blogs`} className={styles.blog}>
-            <Image
-              src={"/1.png"}
-              className={styles.blogImg}
-              width={100}
-              height={70}
-              alt="blog"
-            />
-            <div className={styles.title}>
-              <h3>How to build muscle as a vegan </h3>
-              <p> November 20 2022 </p>
-            </div>
-          </Link>
-          <Link href={`/blogs`} className={styles.blog}>
-            <Image
-              src={"/1.png"}
-              className={styles.blogImg}
-              width={100}
-              height={70}
-              alt="blog"
-            />
-            <div className={styles.title}>
-              <h3>How to build muscle as a vegan </h3>
-              <p> November 20 2022 </p>
-            </div>
-          </Link>
+          <h2>USEFUL LINKS</h2>
+          <ul>
+            <Link href={"/"}> Home </Link>
+            <Link href={"/about"}> About </Link>
+            <Link href={"/create"}> Create </Link>
+            <Link href={"/contact"}> Contact </Link>
+            <Link href={"/privacypolicy "}> Privacy policy </Link>
+          </ul>
         </article>
         <article className={styles.footerRight}>
           <h2>ABOUS US</h2>

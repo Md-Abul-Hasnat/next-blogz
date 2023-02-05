@@ -1,6 +1,6 @@
 import styles from "../styles/PopularCetagory.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faClock,faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useContext } from "react";
 import { GlobalContext } from "./Context";
@@ -21,7 +21,7 @@ const PopularCetagory = ({ blogs }) => {
 
   return (
     <section className={styles.PopularCetagory}>
-      <h1>POPULAR CETAGORIES</h1>
+      <h1><FontAwesomeIcon className={styles.mainIcon} icon={faFireFlameCurved} /> POPULAR CETAGORIES</h1>
       <main className={styles.PopularCetagoryWrapper}>
         <article className={styles.cetagory}>
           <div className={styles.cetagoryName}>

@@ -68,28 +68,20 @@
   font-size: 1.5rem;
 }
 
-.blog {
-  display: flex;
-  gap: 10px;
-  margin-top: 30px;
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
+.footerMid ul{
+  margin-top: 25px;
 }
 
-.blogImg {
-  width: 100px !important;
-}
-
-.blog h3 {
+.footerMid ul a{
+  display: block;
+  list-style: none;
+  margin-top: 20px;
   font-size: 1rem;
-  color: var(--white);
+  text-transform: uppercase;
+  transition: .4s;
 }
-
-.blog p {
-  font-size: 0.9rem;
-  margin-top: 5px;
-  color: var(--gray);
+.footerMid ul a:hover{
+  margin-left: 10px;
 }
 
 .footerRight {
@@ -136,21 +128,7 @@
     font-size: 1.1rem;
   }
 
-  .blog {
-    margin-top: 25px;
-  }
-
-  .blogImg {
-    width: 80px !important;
-  }
-
-  .blog h3 {
-    font-size: 0.9rem;
-  }
-
-  .blog p {
-    font-size: 0.7rem;
-  }
+ 
   .footerRight h2 {
     font-size: 1.1rem;
   }

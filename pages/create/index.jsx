@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../components/Context";
 import styles from "../../styles/Create.module.css";
@@ -10,11 +11,28 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/router";
+
 
 const CreateBlog = () => {
   const router = useRouter();
   const { user,edit,setEdit } = useContext(GlobalContext);
+  const [image, setImage] = useState(null);
+  const time = new Date().getTime();
+  const [blogData, setBlogData] = useState({
+    title: "",
+    cetagory: "",
+    isTrending: "",
+    body: "",
+    blogImgUrl: "",
+    blogID: uuidv4(),
+    date: time,
+    author: user?.displayName,
+    authorImgUrl: user?.photoURL,
+    authorID: user?.uid,
+  });
+
+  
+
 
   useEffect(() => {
     setBlogData({
@@ -30,6 +48,7 @@ const CreateBlog = () => {
 
       const {blogImgUrl,title,cetagory,isTrending,body,blogID,date } = edit?.data?.blogData
 
+      setImage(blogImgUrl)
       setBlogData({
         title,
         cetagory,
@@ -46,31 +65,30 @@ const CreateBlog = () => {
 
   },[])
 
-  const time = new Date().getTime();
 
-  const [blogData, setBlogData] = useState({
-    title: "",
-    cetagory: "",
-    isTrending: "",
-    body: "",
-    blogImgUrl: "",
-    blogID: uuidv4(),
-    date: time,
-    author: user?.displayName,
-    authorImgUrl: user?.photoURL,
-    authorID: user?.uid,
-  });
+  const readImage = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setImage(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
 
 
   function uploadImage(e) {
+
+    readImage(e)
     const storageRef = ref(storage, `images/${e.target.value}`);
 
-    uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+    uploadBytes(storageRef, e.target.files[0]).then(() => {
       getDownloadURL(storageRef)
         .then((url) => {
           setBlogData({ ...blogData, blogImgUrl: url });
         })
-        .catch((error) => {
+        .catch(() => {
           toast.error("Image upload failed!!");
         });
     });
@@ -112,26 +130,35 @@ const CreateBlog = () => {
   async function editBlog(e){
     e.preventDefault()
 
-    const blogRef = doc(db, "blogs", edit.data.id);
-   
-     await updateDoc(blogRef,{blogData});
-    toast.success("Blog updated successfully!")
 
-    setEdit({value : false, data : {}})
+    if (blogData.blogImgUrl) {
 
-    setBlogData({
-      title:'',
-      cetagory:'',
-      isTrending:'',
-      body:'',
-      blogImgUrl:'',
-      blogID:'',
-      date:'',
-      author: user?.displayName,
-      authorImgUrl: user?.photoURL,
-      authorID: user?.uid,
-    })
-    router.push("/")
+     try {
+        const blogRef = doc(db, "blogs", edit.data.id);
+      await updateDoc(blogRef,{blogData});
+      toast.success("Blog updated successfully!")
+  
+      setEdit({value : false, data : {}})
+  
+      setBlogData({
+        title:'',
+        cetagory:'',
+        isTrending:'',
+        body:'',
+        blogImgUrl:'',
+        blogID:'',
+        date:'',
+        author: user?.displayName,
+        authorImgUrl: user?.photoURL,
+        authorID: user?.uid,
+      })
+      router.push("/")
+        } catch (e) {
+          toast.error("Something went wrong!!");
+        }
+      } else {
+        toast.error("Image is required!!");
+      }
   }
 
   return (
@@ -152,7 +179,7 @@ const CreateBlog = () => {
             <form className={styles.blogFormWrapper} onSubmit={edit.value ? editBlog : publishBlog}>
               <Image
                 src={`${
-                  blogData.blogImgUrl ? blogData.blogImgUrl : "/placeholder.jpg"
+                  image ? image : "/placeholder.jpg"
                 }`}
                 alt="blog image"
                 width={500}
