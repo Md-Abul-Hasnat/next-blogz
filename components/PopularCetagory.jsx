@@ -47,10 +47,10 @@ const PopularCetagory = ({ blogs }) => {
         </article>
         <article className={styles.cetagory}>
           <div className={styles.cetagoryName}>
-            <h2>Programming</h2>
+            <h2>Politics</h2>
           </div>
           <div className={styles.cetagoryBlogs}>
-            {programmingBlogs.slice(0,3).map((blog, i) => {
+            {politicsBlogs.slice(0,3).map((blog, i) => {
               const { blogImgUrl, title, date, blogID } = blog;
               return (
                 <Link href={`/${blogID}`} key={i}>
@@ -69,10 +69,10 @@ const PopularCetagory = ({ blogs }) => {
         </article>
         <article className={styles.cetagory}>
           <div className={styles.cetagoryName}>
-            <h2>Educaion</h2>
+            <h2>Programming</h2>
           </div>
           <div className={styles.cetagoryBlogs}>
-            {politicsBlogs.slice(0,3).map((blog, i) => {
+            {programmingBlogs.slice(0,3).map((blog, i) => {
               const { blogImgUrl, title, date, blogID } = blog;
               return (
                 <Link href={`/${blogID}`} key={i}>

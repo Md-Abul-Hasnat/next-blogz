@@ -15,9 +15,8 @@ const blogDetail = ({ blog,blogs }) => {
  
   const { author, authorImgUrl, blogImgUrl, body, cetagory, date, title } = blog[0]
 
-   const reletedBlogs = blogs?.filter(
-    (blog) => blog.cetagory === cetagory && blog !== blog
-  );
+  const reletedBlogs = blogs.filter(data => data.cetagory === cetagory && data.blogID !== blog[0].blogID)
+
 
   return (
     <section className={styles.blogDetail}>

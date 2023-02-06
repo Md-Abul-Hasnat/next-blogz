@@ -31,9 +31,6 @@ const CreateBlog = () => {
     authorID: user?.uid,
   });
 
-  
-
-
   useEffect(() => {
     setBlogData({
       ...blogData,
@@ -46,7 +43,7 @@ const CreateBlog = () => {
   useEffect(()=>{
     if(edit.value){
 
-      const {blogImgUrl,title,cetagory,isTrending,body,blogID,date } = edit?.data?.blogData
+      const {blogImgUrl,title,cetagory,isTrending,body,blogID,date } = edit?.data
 
       setImage(blogImgUrl)
       setBlogData({
@@ -135,7 +132,7 @@ const CreateBlog = () => {
 
      try {
         const blogRef = doc(db, "blogs", edit.data.id);
-      await updateDoc(blogRef,{blogData});
+      await updateDoc(blogRef,{...blogData});
       toast.success("Blog updated successfully!")
   
       setEdit({value : false, data : {}})
@@ -221,6 +218,7 @@ const CreateBlog = () => {
                     <option value="Digital Marketing">Digital Marketing</option>
                     <option value="World Affairs">World Affairs</option>
                     <option value="Programming">Programming</option>
+                    <option value="Nature">Nature</option>
                   </select>
                 </div>
                 <div className={styles.trending}>
