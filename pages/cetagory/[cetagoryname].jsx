@@ -9,7 +9,7 @@ import { useState } from "react";
 const Cetagory = ({allBlogs}) => {
 
   const router = useRouter()
-  const selectedCetagoryBlogs = allBlogs?.filter(blog => blog.blogData.cetagory === router.query.cetagoryname )
+  const selectedCetagoryBlogs = allBlogs?.filter(blog => blog.cetagory === router.query.cetagoryname )
   const [showBlog,setShowBlog] = useState(selectedCetagoryBlogs.slice(0,12))
 
 
@@ -25,7 +25,7 @@ const Cetagory = ({allBlogs}) => {
     <h1 className={style.cetagoryName}> {router.query.cetagoryname} </h1>
     <main className={style.cetagoryWrapper}>
       {selectedCetagoryBlogs.length === 0 ? <h1 className={style.notFound}>No blog found !</h1> :
-        showBlog.map((blog,i) => <BlogCard data={blog.blogData} key={i} /> )
+        showBlog.map((blog,i) => <BlogCard data={blog} key={i} /> )
       }
     </main>
     {

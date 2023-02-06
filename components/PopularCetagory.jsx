@@ -10,13 +10,13 @@ const PopularCetagory = ({ blogs }) => {
   const { reduceText, getDate } = useContext(GlobalContext);
 
   const sportsBlogs = blogs.filter(
-    (blog) => blog.blogData.cetagory === "Sports"
+    (blog) => blog.cetagory === "Sports"
   );
   const politicsBlogs = blogs.filter(
-    (blog) => blog.blogData.cetagory === "Politics"
+    (blog) => blog.cetagory === "Politics"
   );
   const programmingBlogs = blogs.filter(
-    (blog) => blog.blogData.cetagory === "Programming"
+    (blog) => blog.cetagory === "Programming"
   );
 
   return (
@@ -29,7 +29,7 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {sportsBlogs.slice(0,3).map((blog, i) => {
-              const { blogImgUrl, title, date, blogID } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog;
               return (
                 <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />
@@ -51,7 +51,7 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {programmingBlogs.slice(0,3).map((blog, i) => {
-              const { blogImgUrl, title, date, blogID } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog;
               return (
                 <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />
@@ -73,7 +73,7 @@ const PopularCetagory = ({ blogs }) => {
           </div>
           <div className={styles.cetagoryBlogs}>
             {politicsBlogs.slice(0,3).map((blog, i) => {
-              const { blogImgUrl, title, date, blogID } = blog.blogData;
+              const { blogImgUrl, title, date, blogID } = blog;
               return (
                 <Link href={`/${blogID}`} key={i}>
                   <Image src={blogImgUrl} width={150} height={150} alt="blog" />

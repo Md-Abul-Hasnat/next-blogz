@@ -5,26 +5,18 @@ import HomeRightPart from "../components/HomeRightPart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/BlogDetail.module.css";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, query, where,getDocs } from "firebase/firestore";
 import { db } from "../components/firebaseConfig";
-import { useRouter } from "next/router";
 import ReletedBlogs from "../components/ReletedBlogs";
 
-const blogDetail = ({ blogs }) => {
+const blogDetail = ({ blog,blogs }) => {
+
   const { getDate } = useContext(GlobalContext);
+ 
+  const { author, authorImgUrl, blogImgUrl, body, cetagory, date, title } = blog[0]
 
-  const router = useRouter();
-  
-
-  const selectedBlog = blogs?.find(
-    (blog) => blog.blogData.blogID === router.query?.blogid
-  );
-
-  const { author, authorImgUrl, blogImgUrl, body, cetagory, date, title } =
-    selectedBlog?.blogData;
-
-  const reletedBlogs = blogs?.filter(
-    (blog) => blog.blogData.cetagory === cetagory && blog !== selectedBlog
+   const reletedBlogs = blogs?.filter(
+    (blog) => blog.cetagory === cetagory && blog !== blog
   );
 
   return (
@@ -69,14 +61,16 @@ const blogDetail = ({ blogs }) => {
 
 export default blogDetail;
 
-export async function getServerSideProps() {
-  const blogs = [];
-  const querySnapshot = await getDocs(collection(db, "blogs"));
-  querySnapshot.forEach((doc) => {
-    blogs.push(doc.data());
-  });
+export async function getServerSideProps({params}) {
+
+  const ref = collection(db, "blogs");
+  const q = query(ref, where("blogID", "==", `${params.blogid}`));
+  const querySnapshot = await getDocs(q);
+  const allBlogSnapshot = await getDocs(ref)
+ const blog = querySnapshot.docs.map((doc) => doc.data() );
+ const blogs =  allBlogSnapshot.docs.map((doc) => doc.data() );
 
   return {
-    props: { blogs },
+    props: { blog,blogs },
   };
 }

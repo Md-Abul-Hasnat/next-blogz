@@ -41,7 +41,7 @@ export default function HeroSwiper({ blogs }) {
         className={styles.mySwiper}
       >
         {blogs.map((blog, i) => {
-          const { blogImgUrl, cetagory, title, blogID } = blog.blogData;
+          const { blogImgUrl, cetagory, title, blogID } = blog;
           return (
             <SwiperSlide key={i} className={styles.SwiperSlide}>
               <div className={styles.image}>

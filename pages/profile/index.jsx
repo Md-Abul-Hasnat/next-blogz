@@ -2,7 +2,7 @@ import style from '../../styles/Profile.module.css';
 import { toast } from "react-toastify";
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot  } from "firebase/firestore";
 import { db } from '../../components/firebaseConfig';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,7 @@ const [loading,setLoading] = useState(false)
 const [alert,setAlert] = useState(false)
 const [blogID,setBlogID] = useState()
 
-const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
+const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
 
     function signOut() {
         router.push('/')
@@ -105,7 +105,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.blogData.authorID === user?.uid)
         { myBlogs?.length === 0  ? <h1 className={style.noBlog}>No blogs available</h1> :  myBlogs?.map((blog,i)=> {
 
                 const {id} = blog
-                const {blogImgUrl,title,cetagory,date} = blog.blogData
+                const {blogImgUrl,title,cetagory,date} = blog
 
                 return(
                     <article className={style.blogCard} key={i}>

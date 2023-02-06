@@ -26,9 +26,9 @@ const HomeRightPart = ({ blogs }) => {
 
   const popularBlogs = blogs.filter(
     (blog) =>
-      blog.blogData.cetagory === "Digital Marketing" ||
-      blog.blogData.cetagory === "Sports" ||
-      blog.blogData.cetagory === "Nature"
+      blog.cetagory === "Digital Marketing" ||
+      blog.cetagory === "Sports" ||
+      blog.cetagory === "Nature"
   );
 
   return (
@@ -57,7 +57,7 @@ const HomeRightPart = ({ blogs }) => {
                 <small>{cetagory} </small>
                 <small>
                   {
-                    blogs.filter((blog) => blog.blogData.cetagory === cetagory)
+                    blogs.filter((blog) => blog.cetagory === cetagory)
                       .length
                   }
                 </small>
@@ -70,7 +70,7 @@ const HomeRightPart = ({ blogs }) => {
       <div className={styles.popularPosts}>
         <h1>Popular Blogs</h1>
         {popularBlogs.slice(0, 5).map((blog, i) => {
-          const { title, blogImgUrl, date, blogID } = blog.blogData;
+          const { title, blogImgUrl, date, blogID } = blog;
           return (
             <Link key={i} href={`/${blogID}`}>
               <Image

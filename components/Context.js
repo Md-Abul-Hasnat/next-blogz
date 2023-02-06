@@ -4,7 +4,6 @@ export const GlobalContext = createContext();
 
 const Context = ({ children }) => {
   const [user, setUser] = useState();
-  const [blogs, setBlogs] = useState([]);
   const [edit,setEdit] = useState({value : false, data : {}})
 
 
@@ -45,7 +44,7 @@ const Context = ({ children }) => {
 
   return (
     <GlobalContext.Provider
-      value={{ user, blogs,edit, setUser, setBlogs, reduceText, getDate,setEdit }}
+      value={{ user, edit, setUser, reduceText, getDate,setEdit }}
     >
       {children}
     </GlobalContext.Provider>

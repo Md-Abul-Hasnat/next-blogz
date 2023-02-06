@@ -58,7 +58,7 @@ const AllBlogs = () => {
         <section className={style.allBlogs}>
           <main className={style.allBlogsWrapper}>
             {allBlogs?.map((blog, i) => {
-              return <BlogCard data={blog.blogData} key={i} />;
+              return <BlogCard data={blog} key={i} />;
             })}
           </main>
           {!error && (

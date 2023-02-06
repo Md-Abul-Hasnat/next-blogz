@@ -14,7 +14,7 @@ const HeroMain = ({ blogs }) => {
       <div className={styles.heroMainWrapper}>
         <div className={styles.heroLeft}>
           {blogs.slice(0, 8).map((blog, i) => {
-            return <BlogCard data={blog.blogData} key={i} />;
+            return <BlogCard data={blog} key={i} />;
           })}
           <Link className={styles.btn} href={"/allBlogs"}>
             View all blogs

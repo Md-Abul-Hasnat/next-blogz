@@ -108,7 +108,7 @@ const CreateBlog = () => {
     if (blogData.blogImgUrl) {
       try {
         await addDoc(collection(db, "blogs"), {
-          blogData,
+          ...blogData,
         });
         toast.success("Blog created successfully");
         router.push("/");

@@ -10,7 +10,7 @@ const Trending = ({ blogs }) => {
   const { reduceText, getDate } = useContext(GlobalContext);
 
   const trendingBlog = blogs
-    .filter((blog) => blog.blogData.isTrending === "yes")
+    .filter((blog) => blog.isTrending === "yes")
     .slice(0, 6);
 
   return (
@@ -21,7 +21,7 @@ const Trending = ({ blogs }) => {
       </h3>
       <div className={styles.trendingWrapper}>
         {trendingBlog.map((blog, i) => {
-          const { author, authorImgUrl, title, date, blogID } = blog.blogData;
+          const { author, authorImgUrl, title, date, blogID } = blog;
           return (
             <Link key={i} href={`/${blogID}`} className={styles.trendingBlog}>
               <div className={styles.top}>
