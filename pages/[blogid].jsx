@@ -8,6 +8,7 @@ import styles from "../styles/BlogDetail.module.css";
 import { collection, query, where,getDocs } from "firebase/firestore";
 import { db } from "../components/firebaseConfig";
 import ReletedBlogs from "../components/ReletedBlogs";
+import { motion } from "framer-motion";
 
 const blogDetail = ({ blog,blogs }) => {
 
@@ -19,7 +20,13 @@ const blogDetail = ({ blog,blogs }) => {
 
 
   return (
-    <section className={styles.blogDetail}>
+    <motion.section
+     className={styles.blogDetail}
+     initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
+      
       <main className={styles.blogDetailWrapper}>
         <article className={styles.left}>
           <h3>
@@ -42,8 +49,8 @@ const blogDetail = ({ blog,blogs }) => {
             className={styles.blogImg}
             src={blogImgUrl}
             alt="author"
-            width={600}
-            height={300}
+            width={500}
+            height={500}
             priority={true}
           />
           <p className={styles.blogText}>{body}</p>
@@ -54,7 +61,7 @@ const blogDetail = ({ blog,blogs }) => {
       </main>
 
       <ReletedBlogs reletedBlogs={reletedBlogs} />
-    </section>
+    </motion.section>
   );
 };
 

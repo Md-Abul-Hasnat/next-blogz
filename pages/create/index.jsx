@@ -11,6 +11,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import { motion } from "framer-motion";
 
 
 const CreateBlog = () => {
@@ -158,10 +159,22 @@ const CreateBlog = () => {
       }
   }
 
+  <motion.section
+  className={styles.home} 
+  initial={{ x: 300, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  exit={{ x: -300, opacity: 0 }}
+  transition={{ duration: 0.3 }}
+ ></motion.section>
+
   return (
-    <section
+    <motion.section
       className={styles.create}
       style={{ height: `${user?.email ? "fit-content" : "100vh"}` }}
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       {!user?.email ? (
         <section className={styles.warning}>
@@ -247,7 +260,7 @@ const CreateBlog = () => {
           </article>
         </section>
       )}
-    </section>
+    </motion.section>
   );
 };
 

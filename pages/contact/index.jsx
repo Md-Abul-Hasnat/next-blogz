@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import Image from 'next/image';
+import { motion } from "framer-motion";
 
 const Contact = () => {
  
+  
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -46,7 +48,11 @@ const Contact = () => {
   };
 
   return (
-    <>
+    <motion.section 
+    initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
      
         <header className={style.subHeader}>
           <Image src={'/phone.jpg'} alt="Image" width={500} height={300} priority={true} />
@@ -98,7 +104,7 @@ const Contact = () => {
           </div>
         </main>
      
-    </>
+    </motion.section>
   );
 };
 

@@ -2,14 +2,14 @@ import style from '../../styles/Profile.module.css';
 import { toast } from "react-toastify";
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { collection, onSnapshot  } from "firebase/firestore";
+import { collection, onSnapshot ,doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../components/firebaseConfig';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { GlobalContext } from '../../components/Context';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { doc, deleteDoc } from "firebase/firestore";
+import { motion } from "framer-motion";
 
 const Profile = () => {
 
@@ -73,8 +73,16 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
        
       }, []);
 
+
+
   return (
-    <section className={style.profile}>
+    <motion.section
+     className={style.profile}
+     initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
+
         {alert && <div className={style.overlay}></div>}
         
             {
@@ -132,7 +140,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
             })
         }
         </main>
-    </section>
+    </motion.section>
   )
 }
 

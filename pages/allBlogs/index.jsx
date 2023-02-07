@@ -10,6 +10,7 @@ import BlogCard from "../../components/BlogCard";
 import style from "../../styles/AllBlogs.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const AllBlogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
@@ -51,7 +52,11 @@ const AllBlogs = () => {
   }
 
   return (
-    <>
+    <motion.section 
+      initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
       {loading ? (
         <img className={style.loading} src="/loading.gif" alt="loading" />
       ) : (
@@ -68,7 +73,7 @@ const AllBlogs = () => {
           )}
         </section>
       )}
-    </>
+    </motion.section>
   );
 };
 

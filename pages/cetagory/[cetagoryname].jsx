@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import BlogCard from '../../components/BlogCard'
 import style from '../../styles/Cetagory.module.css'
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 
 const Cetagory = ({allBlogs}) => {
@@ -21,7 +22,13 @@ const Cetagory = ({allBlogs}) => {
   }
 
   return (
-   <section className={style.cetagory}>
+   <motion.section 
+      className={style.cetagory} 
+      initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
+
     <h1 className={style.cetagoryName}> {router.query.cetagoryname} </h1>
     <main className={style.cetagoryWrapper}>
       {selectedCetagoryBlogs.length === 0 ? <h1 className={style.notFound}>No blog found !</h1> :
@@ -32,7 +39,7 @@ const Cetagory = ({allBlogs}) => {
      showBlog.length === selectedCetagoryBlogs.length ? "" : <button className={style.load} onClick={loadMore}>Load more</button> 
     }
      
-   </section>
+   </motion.section>
   )
 }
 

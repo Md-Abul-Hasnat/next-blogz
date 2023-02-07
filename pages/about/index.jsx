@@ -10,10 +10,16 @@ import HomeRightPart from "../../components/HomeRightPart";
 import Image from "next/image";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../components/firebaseConfig";
+import { motion } from "framer-motion";
 
 const About = ({ blogs }) => {
   return (
-    <section>
+    <motion.section 
+    initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}
+    >
       <div className={styles.specificCetagoryHead}>
         <Image
           className={styles.aboutBG}
@@ -81,7 +87,7 @@ const About = ({ blogs }) => {
           <HomeRightPart blogs={blogs} />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

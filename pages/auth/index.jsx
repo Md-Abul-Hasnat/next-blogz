@@ -14,6 +14,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../components/Context";
+import { motion } from "framer-motion";
 
 const Auth = () => {
   
@@ -130,7 +131,11 @@ const Auth = () => {
   }
 
   return (
-    <div>
+    <motion.div 
+    initial={{ x: 300, opacity: 0 }}
+     animate={{ x: 0, opacity: 1 }}
+     exit={{ x: -300, opacity: 0 }}
+     transition={{ duration: 0.3 }}>
       {forgotPassword ? (
         <section className={styles.forgotPass}>
           <h1>Please provide your email address.</h1>
@@ -223,7 +228,7 @@ const Auth = () => {
           </main>
         </section>
       )}
-    </div>
+    </motion.div>
   );
 };
 
