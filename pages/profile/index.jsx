@@ -2,7 +2,7 @@ import style from '../../styles/Profile.module.css';
 import { toast } from "react-toastify";
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
-import { collection, onSnapshot ,doc, deleteDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, doc, deleteDoc  } from "firebase/firestore";
 import { db } from '../../components/firebaseConfig';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -59,18 +59,22 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
         }
     }, [])
     
+  
+
     useEffect(() => {
-        setLoading(true)
-         onSnapshot(collection(db, "blogs"), (snapshot) => {
-          const allBlogs = [];
-          snapshot.docs.forEach((doc) => {
-            allBlogs.push({ id: doc.id, ...doc.data() });
-          });
-          setAllBlogs(allBlogs);
-          setLoading(false);
+   
+        async function getBlogs(){
+            setLoading(true)
+            const q = query(collection(db, "blogs"), where("authorID", "==", user?.uid));
+           const querySnapshot = await getDocs(q);
+          const data =   querySnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() }
         });
-    
-       
+        setAllBlogs(data)
+        setLoading(false)
+        }
+        
+        getBlogs()
       }, []);
 
 

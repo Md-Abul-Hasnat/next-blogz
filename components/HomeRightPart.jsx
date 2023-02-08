@@ -28,7 +28,7 @@ const HomeRightPart = ({ blogs }) => {
     (blog) =>
       blog.cetagory === "Digital Marketing" ||
       blog.cetagory === "Sports" ||
-      blog.cetagory === "Nature"
+      blog.cetagory === "Politics"
   );
 
   return (
@@ -69,7 +69,7 @@ const HomeRightPart = ({ blogs }) => {
 
       <div className={styles.popularPosts}>
         <h1>Popular Blogs</h1>
-        {popularBlogs.slice(0, 5).map((blog, i) => {
+        {popularBlogs.slice(0, 4).map((blog, i) => {
           const { title, blogImgUrl, date, blogID } = blog;
           return (
             <Link key={i} href={`/${blogID}`}>
@@ -81,7 +81,7 @@ const HomeRightPart = ({ blogs }) => {
                 alt="Popular blog"
               />
               <div className="detail">
-                <h4> {reduceText(title, 50)} </h4>
+                <h4> {reduceText(title, 50)}.. </h4>
                 <p> {getDate(date)}</p>
               </div>
             </Link>

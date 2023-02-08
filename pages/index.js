@@ -27,9 +27,9 @@ export default function Home({ allBlogs }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const blogs = [];
-
+  
   const querySnapshot = await getDocs(collection(db, "blogs"));
 
   querySnapshot.forEach((doc) => {
@@ -38,5 +38,7 @@ export async function getServerSideProps() {
 
   return {
     props: { allBlogs: blogs },
+    revalidate: 10,
+    
   };
 }

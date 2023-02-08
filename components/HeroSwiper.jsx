@@ -40,7 +40,7 @@ export default function HeroSwiper({ blogs }) {
         modules={[Pagination]}
         className={styles.mySwiper}
       >
-        {blogs.map((blog, i) => {
+        {blogs.slice(0,8).map((blog, i) => {
           const { blogImgUrl, cetagory, title, blogID } = blog;
           return (
             <SwiperSlide key={i} className={styles.SwiperSlide}>

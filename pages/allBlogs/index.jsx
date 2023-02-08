@@ -14,15 +14,16 @@ import { motion } from "framer-motion";
 
 const AllBlogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
-  const [blogsLength, setBlogLength] = useState(0);
   const [lastDoc, setLastDoc] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
+
   useEffect(() => {
     async function getData() {
       setLoading(true);
-      const first = query(collection(db, "blogs"), limit(9));
+      const first = query(collection(db, "blogs"), limit(12));
       const documentSnapshots = await getDocs(first);
       const data = documentSnapshots.docs.map((doc) => doc.data());
       setAllBlogs(data);
@@ -35,7 +36,7 @@ const AllBlogs = () => {
   }, []);
 
   async function nextPageData() {
-    const next = query(collection(db, "blogs"), startAfter(lastDoc), limit(9));
+    const next = query(collection(db, "blogs"), startAfter(lastDoc), limit(12));
     const documentSnapshots = await getDocs(next);
     const data = documentSnapshots.docs.map((doc) => doc.data());
     setAllBlogs([...allBlogs, ...data]);
@@ -44,11 +45,12 @@ const AllBlogs = () => {
       documentSnapshots.docs[documentSnapshots.docs.length - 1];
 
     setLastDoc(lastDocument);
-    setBlogLength([...allBlogs, ...data].length);
-    if (allBlogs.length === blogsLength) {
+    
+    if (!lastDocument ) {
       setError(true);
       toast.success("No more blogs available!!");
     }
+   
   }
 
   return (
@@ -58,7 +60,7 @@ const AllBlogs = () => {
      exit={{ x: -300, opacity: 0 }}
      transition={{ duration: 0.3 }}>
       {loading ? (
-        <img className={style.loading} src="/loading.gif" alt="loading" />
+        <img className={style.loading} src="/load.gif" alt="loading" />
       ) : (
         <section className={style.allBlogs}>
           <main className={style.allBlogsWrapper}>
