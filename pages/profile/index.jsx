@@ -14,11 +14,12 @@ import { motion } from "framer-motion";
 const Profile = () => {
 
 const router = useRouter()
-const {user,setUser,getDate,reduceText,edit,setEdit} = useContext(GlobalContext)
+const {user,setUser,getDate,reduceText,setEdit} = useContext(GlobalContext)
 const [allBlogs,setAllBlogs] = useState()
 const [loading,setLoading] = useState(false)
 const [alert,setAlert] = useState(false)
-const [blogID,setBlogID] = useState()
+const [blogID,setBlogID] = useState() 
+const [runEffect,setRunEffect] = useState(false)
 
 const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
 
@@ -42,6 +43,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
             setAlert(false)
             await deleteDoc(doc(db, "blogs", id));
             toast.success("Blog deleted successfully!")
+            setRunEffect(!runEffect)
         } catch (error) {
             setAlert(false)
             toast.error('Something went wrong!')
@@ -75,7 +77,7 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
         }
         
         getBlogs()
-      }, []);
+      }, [runEffect]);
 
 
 
@@ -117,13 +119,13 @@ const myBlogs = allBlogs?.filter(blog=> blog.authorID === user?.uid)
         { myBlogs?.length === 0  ? <h1 className={style.noBlog}>No blogs available</h1> :  myBlogs?.map((blog,i)=> {
 
                 const {id} = blog
-                const {blogImgUrl,title,cetagory,date} = blog
+                const {blogImgUrl,title,cetagory,date,blogID} = blog
 
                 return(
                     <article className={style.blogCard} key={i}>
                         <Image src={blogImgUrl} alt={"blog Image"} width={150} height={150} priority={true} />
                         <div className={style.blogRight}>
-                            <h1> {reduceText(title,80)}... </h1>
+                            <Link href={`/${blogID}`}> {reduceText(title,80)}... </Link>
                             <h3>{cetagory} </h3>
                             <p> {getDate(date)} </p>
                             <div className={style.icons}>
