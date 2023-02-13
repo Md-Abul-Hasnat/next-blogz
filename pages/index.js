@@ -7,17 +7,14 @@ import { db } from "../components/firebaseConfig";
 import PopularCetagory from "../components/PopularCetagory";
 import { motion } from "framer-motion";
 
-
 export default function Home({ allBlogs }) {
-
-
   return (
     <motion.section
-     className={styles.home} 
-     initial={{ x: 300, opacity: 0 }}
-     animate={{ x: 0, opacity: 1 }}
-     exit={{ x: -300, opacity: 0 }}
-     transition={{ duration: 0.3 }}
+      className={styles.home}
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <HeroSwiper blogs={allBlogs} />
       <Trending blogs={allBlogs} />
@@ -29,7 +26,7 @@ export default function Home({ allBlogs }) {
 
 export async function getStaticProps() {
   const blogs = [];
-  
+
   const querySnapshot = await getDocs(collection(db, "blogs"));
 
   querySnapshot.forEach((doc) => {
@@ -39,6 +36,5 @@ export async function getStaticProps() {
   return {
     props: { allBlogs: blogs },
     revalidate: 10,
-    
   };
 }
