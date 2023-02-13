@@ -4,12 +4,12 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAILoqNYMI-dCL1iqd1PM6PFXB47s4SL8E",
-  authDomain: "next-blogz.firebaseapp.com",
+  apiKey: `${process.env.FIREBASE_API_KEY}`,
+  authDomain: `${process.env.FIREBASE_AUTHDOMAIN}`,
   projectId: "next-blogz",
-  storageBucket: "next-blogz.appspot.com",
-  messagingSenderId: "1037134576888",
-  appId: "1:1037134576888:web:4a8385d6d9d42f75100f0d",
+  storageBucket: `${process.env.FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.FIREBASE_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.FIREBASE_APP_ID}`,
 };
 
 // Initialize Firebase

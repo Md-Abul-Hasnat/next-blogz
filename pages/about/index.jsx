@@ -14,11 +14,11 @@ import { motion } from "framer-motion";
 
 const About = ({ blogs }) => {
   return (
-    <motion.section 
-    initial={{ x: 300, opacity: 0 }}
-     animate={{ x: 0, opacity: 1 }}
-     exit={{ x: -300, opacity: 0 }}
-     transition={{ duration: 0.3 }}
+    <motion.section
+      initial={{ x: 300, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -300, opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className={styles.specificCetagoryHead}>
         <Image
@@ -73,10 +73,7 @@ const About = ({ blogs }) => {
           <div className={styles.aboutBottom}>
             <h2>Follow us on</h2>
             <div className={styles.socialIcons}>
-              <FontAwesomeIcon
-                className={styles.icon}
-                icon={faFacebookF}
-              />
+              <FontAwesomeIcon className={styles.icon} icon={faFacebookF} />
               <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
               <FontAwesomeIcon className={styles.icon} icon={faInstagram} />
               <FontAwesomeIcon className={styles.icon} icon={faLinkedinIn} />
